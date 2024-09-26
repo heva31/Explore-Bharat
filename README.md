@@ -42,4 +42,4 @@ Contact Form: Allows users to reach out with inquiries or feedback.<br>
 <h2>Visit the Website</h2>
 You can view the live version of Explore Bharat at the following link:
 <br>
-<a href="https://<your-username>.github.io/<repository-name>/" target="_blank">Explore Bharat Live Demo</a>
+<a href="https://heva31.github.io/Explore-bharat-trial/" target="_self">Explore Bharat Live Demo</a>
