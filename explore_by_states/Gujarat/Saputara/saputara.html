@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Saputara</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="../../places.css">
+</head>
+
+<body>
+  <div class="header" style="background-image: url(saputara_bg.jpg); background-position: 50%;">
+    <h1>Saputara</h1>
+
+  </div>
+
+  <div class="content">
+    <div class="content-details">
+
+      <p id="content">
+      <h2>HISTORY</h2>
+
+      Saputara in Gujarat is located about 164 km from Surat, about 1000 m above sea level on the Maharashtra-Gujarat
+      border. Blessed with natural beauty and bio-diversity, Saputara enjoys cool climate throughout the year and has
+      much to offer in the form of gardens, parks and sanctuaries. Minimally commercialized and still unspoiled,
+      Saputara is an ideal tourist spot to enjoy with your family. The hills and forests around the hill station are an
+      ideal place for trekking enthusiasts. Trekking trails to Rajat Pratap and to Tridhara near Dhupgarh are very
+      popular. The town is also known as the 'Abode of Serpents' and even has a shrine to serpent god on the banks of
+      river Sarpaganga.
+      </p>
+
+      <div id="show-more" class="hidden">
+
+      </div>
+      <div id="show-more-btn" class="show-more-btn" onclick="showMore()">
+        Know more
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <div class="content">
+    <div class="content-details">
+      <h2>Tourist Attractions</h2>
+
+      <p id="content">
+        The uniquely constructed wooden log huts of Saputara are very famous. Visitors can stay here in the midst of
+        wilderness to be one with nature. These unique log huts are run by the State Forest Department and make for an
+        amazing experience.
+        <br><br>
+        Apart from that, Saputara has a few budget hotels and also some mid-range hotels. Budget rooms come with basic
+        facilities and cost between Rs 300 and Rs 800. Some other (slightly expensive) hotels offer very good facilities
+        and even arrange camps to nearby places and organize treks. Rooms here can cost between Rs 1000 and Rs 3000.
+        <br><br>
+        Saputara is a great place to sample vegetarian Gujarati thalis, readily available in almost every restaurant.
+        Some restaurants also offer standard north Indian, Chinese and Udupi fare. At every corner, you will find stalls
+        selling nimbu paani, sodas and golas.
+      </p>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="content-details">
+      <h2>Timings</h2>
+
+      <p id="content">
+        Also known as the Saputara tribal museum, it has an assortment of ornaments, artefacts, wooden carvings, body
+        tattoos, ritual objects and musical instruments that depict the rich culture and lifestyle of the local tribes.
+        The museum is considered to be a great initiative by the government of Gujarat to introduce the travellers to
+        the splendid heritage of Dang's native people. Besides, the museum also educates its visitors about other facets
+        of the Dang, like its ecology and geography.
+      <ul>
+        <li>This amazing place in Saputara hill station of Gujarat is open for visitors from 10:00 am to 5:00 pm with a
+          minimal entry fee.</li>
+        <li>Boat House Timings: 8.30 AM - 6.30 PM</li>
+      </ul>
+      </p>
+    </div>
+  </div>
+
+
+  <div class="content">
+    <div class="content-details">
+      <h2>PHOTO GALLERY</h2>
+    </div>
+  </div>
+
+  <div class="full-img" id="fullImgBox">
+    <img src="saputara1.jpg" id="fullImg" />
+    <span onclick="closeFullImg()">&times;</span>
+  </div>
+  <div class="img-gallery">
+    <img src="saputara1.jpg" id="i1" onclick="openFullImg(this)" />
+    <img src="saputara2.jpg" id="i2" onclick="openFullImg(this)" />
+    <img src="saputara3.jpg" id="i3" onclick="openFullImg(this)" />
+    <img src="saputara4.jpg" id="i4" onclick="openFullImg(this)" />
+    <img src="saputara5.jpg" id="i5" onclick="openFullImg(this)" />
+    <img src="saputara6.jpg" id="i6" onclick="openFullImg(this)" />
+  </div>
+
+  <div class="transport-section">
+    <h2>How to Get There</h2>
+    <div class="transport-method">
+      <img src="../bus.png" alt="Road Icon">
+      <div>
+        <p><strong>By Road</strong></p>
+        <p>Ahmedabad: 409 km Surat: 164 km</p>
+      </div>
+    </div>
+    <div class="transport-method">
+      <img src="../train.png" alt="Train Icon">
+      <div>
+        <p><strong>By Train</strong></p>
+        <p>Nearest Major Railway Station : Surat</p>
+      </div>
+    </div>
+    <div class="transport-method">
+      <img src='../air.png' alt="Airplane Icon">
+      <div>
+        <p><strong>By Air</strong></p>
+        <p>
+          Gujarat : Surat, Vadodara Maharashtra : Nasik</p>
+      </div>
+    </div>
+  </div>
+  <div class="container mt-5">
+    <h1>Where To Stay</h1>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="card">
+          <a 
+            href="https://www.makemytrip.com/hotels/hotel-details/?hotelId=202310240957214515&_uCurrency=INR&checkin=06072024&checkout=07312024&city=CTXSP&country=IN&lat=20.5786&lng=73.75073&locusId=CTXSP&locusType=city&rank=1&reference=hotel&roomStayQualifier=2e0e&rsc=1e2e0e&searchText=Saputara&type=city&mtkeys=5158529456409768682">
+            <img src="hotel1.png" class="card-img-top" alt="Placeholder Image">
+          </a>
+          <div class="card-body">
+            <h5 class="card-title">JALSA VILLAS PHASE TWO
+            </h5>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card">
+          <a 
+            href="https://www.makemytrip.com/hotels/hotel-details/?hotelId=202309051145504952&_uCurrency=INR&checkin=06072024&checkout=07312024&city=CTHATG&country=IN&lat=20.53316&lng=73.75445&locusId=CTXSP&locusType=city&rank=2&reference=hotel&roomStayQualifier=2e0e&rsc=1e2e0e&searchText=Saputara&type=city&mtkeys=-1566422684516795780">
+            <img src="hotel2.png" class="card-img-top" alt="Placeholder Image">
+          </a>
+          <div class="card-body">
+            <h5 class="card-title">Shreephal luxurious Resort- Best resort in saputara
+            </h5>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card">
+          <a 
+            href="https://www.makemytrip.com/hotels/hotel-details/?hotelId=202310141433441433&_uCurrency=INR&checkin=06072024&checkout=07312024&city=CTDIND&country=IN&lat=20.13195&lng=73.6593&locusId=CTXSP&locusType=city&rank=4&reference=hotel&roomStayQualifier=2e0e&rsc=1e2e0e&searchText=Saputara&type=city&mtkeys=1793876323905846584">
+            <img src="hotel3.png" class="card-img-top" alt="Placeholder Image">
+          </a>
+          <div class="card-body">
+            <h5 class="card-title">StayVista at Cascading Valleys</h5>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="operator">
+    <h2>Registered Tourist Guides</h2>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="details">
+          <div class="labelHed">Tourist Guide</div>
+          <h4>Pravin Dangera</h4>
+          <table>
+            <tbody>
+              <tr>
+                <td>Mobile</td>
+                <td>
+                  9925426770
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="details">
+          <div class="labelHed">Tourist Guide</div>
+          <h4>Solanki Jitendrasinh</h4>
+          <table>
+            <tbody>
+              <tr>
+                <td>Mobile</td>
+                <td>
+                  9624082142
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="details">
+          <div class="labelHed">Tourist Guide</div>
+          <h4>Vipulkumar Rameshchandra Raval</h4>
+          <table>
+            <tbody>
+              <tr>
+                <td>Mobile</td>
+                <td>
+                  9924888505
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="mapouter">
+    <div class="gmap_canvas"><iframe class="gmap_iframe" width="100%" frameborder="0" scrolling="no" marginheight="0"
+        marginwidth="0"
+        src="https://maps.google.com/maps?width=400&amp;height=400&amp;hl=en&amp;q=Saputara&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe><a
+        href="https://embed-googlemap.com">embed google map</a></div>
+    <style>
+      .mapouter {
+        margin: auto;
+        text-align: right;
+        width: 80%;
+        height: 400px;
+      }
+
+      .gmap_canvas {
+        overflow: hidden;
+        background: none !important;
+        width: 100%;
+        height: 400px;
+      }
+
+      .gmap_iframe {
+        height: 400px !important;
+      }
+    </style>
+  </div>
+  <script>
+    function showMore() {
+      var contentDiv = document.getElementById("content");
+      var showMoreDiv = document.getElementById("show-more");
+      var showMoreBtn = document.getElementById("show-more-btn");
+
+      if (showMoreDiv.classList.contains("hidden")) {
+        // Fetch additional content dynamically here
+        var additionalContent = `Saputara also has other places of religious significance including the Nageshwar Mahadev Temple, Jain Temple and the Swaminarayan Temple. Saputara Lake, situated in the middle of the valley amidst lush greenery, is one of the major attractions and offers boating facilities are available on the lake. The town boasts some beautiful gardens like the Step Garden, Rose Garden and Lake Garden. The ropeway, known as the Pushpak Ropeway, is another popular tourist attraction since it gives a bird’s eye view of the surrounding area. Vandsa National Park, also located nearby, is an ideal place to spot tigers, leopard, python and the four-horned antelope.
+
+Bhil, Kunbi and Warli are the main tribal communities here and their main occupation is agriculture. Do visit the Artist Village where you experience their life and culture from close quarters. The villagers are very hospitable. Try your hand at Warli painting or other tribal crafts. Saputara Museum exhibits a variety of clothes, utensils, traditional artifacts, lifestyles, houses of Dang tribals. The museum also conducts various workshops.`;
+        showMoreDiv.innerHTML = additionalContent;
+        showMoreDiv.classList.remove("hidden");
+        showMoreBtn.textContent = "";
+      } else {
+        showMoreDiv.classList.add("hidden");
+        showMoreBtn.textContent = "Know more";
+      }
+
+
+
+    }
+    var fullImgBox = document.getElementById("fullImgBox");
+    var fullImg = document.getElementById("fullImg");
+    var xyz;
+    function openFullImg(pic) {
+      fullImgBox.style.display = "flex";
+      fullImg.src = pic.src;
+      xyz = document.getElementById(pic.id);
+      xyz.classList.add('close');
+    }
+
+    function closeFullImg(pic) {
+      fullImgBox.style.display = "none";
+      xyz.classList.remove('close')
+    }
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Explore Bharat</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+  <script src="js/script.js"></script>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/footer.css">
+  <link rel="stylesheet" href="css/nav.css">
+</head>
+
+<body style="background-image:url('images/3040791.jpg'); background-attachment: fixed; background-position: center;">
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">EXPLORE BHARAT</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="about_india/about_india.html" target="_self">About India</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="contact_us/contact.html" target="_self">Contact us</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="inquiry/inquiry.html" target="_self">Inquiry</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="decorative-div">
+    <a href="index.html"><img src="images/explore-bharat-high-resolution-logo-transparent (1).png" alt="Logo"
+        class="logo"></a>
+    <div class="content">
+      <h2 id="welcome">Welcome to Explore Bharat</h2>
+      <p id="welcome_text">Your ultimate guide to exploring the wonders of India</p>
+    </div>
+  </div>
+
+  <div id="places_outer" class="">
+
+    <div id="places_carousel_back" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="images/sou_updated.jpg" class="d-block w-100" alt="Slide 1">
+        </div>
+        <div class="carousel-item">
+          <img src="images/taj_updated.jpg" class="d-block w-100" alt="Slide 2">
+        </div>
+        <div class="carousel-item">
+          <img src="images/gulmarg.jpg" class="d-block w-100" alt="Slide 3">
+        </div>
+        <div class="carousel-item">
+          <img src="images/goa_updated.jpg" class="d-block w-100" alt="Slide 4">
+        </div>
+        <div class="carousel-item">
+          <img src="images/kumbhalgarh_updated.jpg" class="d-block w-100" alt="Slide 5">
+        </div>
+      </div>
+    </div>
+
+    <div id="places_carousel" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#places_carousel" data-bs-slide-to="0" class="active" aria-current="true"
+          aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#places_carousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#places_carousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        <button type="button" data-bs-target="#places_carousel" data-bs-slide-to="3" aria-label="Slide 4"></button>
+        <button type="button" data-bs-target="#places_carousel" data-bs-slide-to="4" aria-label="Slide 5"></button>
+      </div>
+      <div class="carousel-inner">
+        <div class="carousel-item active"
+          onclick="openPage('explore_by_states/Gujarat/StatueOfUnity/statue_of_unity.html')">
+          <img src="images/sou_updated.jpg" class="d-block w-100" alt="Slide 1">
+          <div class="carousel-caption">
+            <h5>STATUE OF UNITY</h5>
+          </div>
+        </div>
+        <div class="carousel-item" onclick="openPage('explore_by_states/UttarPradesh/TajMahal/taj_mahal.html')">
+          <img src="images/taj_updated.jpg" class="d-block w-100" alt="Slide 2">
+          <div class="carousel-caption">
+            <h5>TAJ MAHAL</h5>
+          </div>
+        </div>
+        <div class="carousel-item" onclick="openPage('explore_by_states/Kashmir/Gulmarg/gulmarg.html')">
+          <img src="images/gulmarg.jpg" class="d-block w-100" alt="Slide 3">
+          <div class="carousel-caption">
+            <h5>GULMARG</h5>
+          </div>
+        </div>
+        <div class="carousel-item" onclick="openPage('explore_by_states/Goa/BagaBeach/baga_beach.html')">
+          <img src="images/goa_updated.jpg" class="d-block w-100" alt="Slide 4">
+          <div class="carousel-caption">
+            <h5>BAGA BEACH</h5>
+          </div>
+        </div>
+        <div class="carousel-item" onclick="openPage('explore_by_states/Rajasthan/Kumbhalgarh/kumbhalgarh.html')">
+          <img src="images/kumbhalgarh_updated.jpg" class="d-block w-100" alt="Slide 5">
+          <div class="carousel-caption">
+            <h5>KUMBHALGARH</h5>
+          </div>
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#places_carousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#places_carousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  </div>
+  <div class="container distributionDiv row ">
+    <div class="image-container col-md-4 hidden" onclick="openPage('explore_by_categories/Historic/historic.html')">
+      <div class="overlay">
+        <h2 style="color:white;">
+          Historical Places
+        </h2>
+      </div>
+      <h1>Historical Places</h1>
+      <img class="image  mx-auto d-block" src="images/historic.jpg" alt="Your Image">
+    </div>
+
+    <div class="image-container col-md-4 hidden" onclick="openPage('explore_by_categories/Hill_Station/hill_station.html')">
+      <div class="overlay">
+        <h2 style="color:white;">
+          Hill Stations
+        </h2>
+      </div>
+      <h1>Hill Stations</h1>
+      <img class="image mx-auto d-block" src="images/hillstation.png" alt="Your Image">
+    </div>
+
+    <div class="image-container col-md-4 hidden" onclick="openPage('explore_by_categories/Religious/religious.html')">
+      <div class="overlay">
+        <h2 style="color:white;">
+          Religious Places
+        </h2>
+      </div>
+      <h1>Religious Places</h1>
+      <img class="image mx-auto d-block" src="images/religious.jpg" alt="Your Image">
+    </div>
+  </div>
+
+  <div class="state-cards ">
+    <h2 class="text-center mt-5">Featured States</h2>
+    <div class="card-container mt-4 hidden">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Gujarat</h5>
+          <hr>
+          <p class="card-text">Gujarat, located in western India, is celebrated for its rich cultural heritage, vibrant
+            festivals, and delectable cuisine. With a blend of historical monuments, scenic landscapes, and bustling
+            cities, it offers a diverse experience for travelers.</p>
+          <button class="btn" onclick="openPage('explore_by_states/Gujarat/gujarat.html')">
+            View More
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="card-container mt-4 hidden">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Rajasthan</h5>
+          <hr>
+          <p class="card-text">Rajasthan, the land of kings, boasts majestic forts, opulent palaces, and vibrant
+            bazaars. With its rich history, colorful traditions, and expansive deserts, it mesmerizes visitors with its
+            royal charm and cultural extravaganza.</p>
+          <button class="btn" onclick="openPage('explore_by_states/Rajasthan/rajasthan.html')">
+            View More
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="card-container mt-4 hidden">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Goa</h5>
+          <hr>
+          <p class="card-text">Goa, known for its picturesque beaches, Portuguese architecture, and lively nightlife, is
+            a paradise for beach lovers and party enthusiasts. With its laid-back vibe, coconut groves, and seafood
+            delicacies, it offers a relaxing getaway by the sea.</p>
+          <button class="btn" onclick="openPage('explore_by_states/Goa/goa.html')">
+            View More
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="card-container mt-4 hidden">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Kashmir</h5>
+          <hr>
+          <p class="card-text">Kashmir, often called heaven on earth, captivates with its stunning landscapes, serene
+            lakes, and snow-capped mountains. Known for its rich culture, warm hospitality, and traditional handicrafts,
+            it's a dream destination for nature lovers and adventurers.</p>
+          <button class="btn" onclick="openPage('explore_by_states/Kashmir/kashmir.html')">
+            View More
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="card-container mt-4 hidden">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Uttar Pradesh</h5>
+          <hr>
+          <p class="card-text">Uttar Pradesh, steeped in history and spirituality, is home to iconic landmarks like the
+            Taj Mahal, Varanasi, and Ayodhya. With its vibrant festivals, sacred sites, and mouthwatering cuisine, it
+            offers a rich tapestry of culture and heritage.</p>
+          <button class="btn" onclick="openPage('explore_by_states/UttarPradesh/uttar_pradesh.html')">
+            View More
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12 col-md-6 text-center ">
+          <h6>About</h6>
+          <p class="about-text">
+            Explore Bharat is a platform dedicated to promoting tourism and cultural exploration across
+            India. Our mission is to provide travelers with comprehensive information and resources to
+            discover the rich heritage, diverse landscapes, and vibrant cultures of Bharat (India).
+          </p>
+        </div>
+
+        <div class="col-xs-6 col-md-3 text-center ">
+          <h6>USEFUL LINKS</h6>
+          <ul class="footer-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#" target="_self">About Inida</a></li>
+            <li><a href="contact_us/contact.html" target="_self">Contact Us</a></li>
+            <li><a href="inquiry/inquiry.html" target="_self">Inquiry</a></li>
+          </ul>
+        </div>
+
+        <div class="col-xs-6 col-md-3 text-center ">
+          <h6>States</h6>
+          <ul class="footer-links">
+            <li><a href="explore_by_states/Gujarat/gujarat.html" target="_self">Gujarat</a></li>
+            <li><a href="explore_by_states/Rajasthan/rajasthan.html" target="_self">Rajasthan</a></li>
+            <li><a href="explore_by_states/Kashmir/kashmir.html" target="_self">Kashmir</a></li>
+            <li><a href="explore_by_states/Goa/goa.html" target="_self">Goa</a></li>
+            <li><a href="explore_by_states/UttarPradesh/uttar_pradesh.html" target="_self">UttarPradesh</a></li>
+          </ul>
+        </div>
+      </div>
+      <hr />
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 col-sm-6 col-xs-12">
+          <p class="copyright-text">
+            Copyright &copy; All Rights Reserved by
+            Explore Bharat.
+          </p>
+        </div>
+        <div class="col-md-4 col-sm-6 col-xs-12">
+          <ul class="social-icons">
+            <li><a class="facebook" href="#"><i class="fab fa-facebook"></i></a></li>
+            <li><a class="whatsapp" href="#"><i class="fab fa-whatsapp"></i></a></li>
+            <li><a class="instagram" href="#"><i class="fab fa-instagram"></i></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+  <script>
+    // Function to check if an element is in the viewport
+    function isInViewport(element) {
+        const rect = element.getBoundingClientRect();
+        return (
+            rect.top >= 0 &&
+            rect.left >= 0 &&
+            rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+            rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+        );
+    }
+
+    // Function to add the fade-in-up effect to elements when they are in the viewport
+    function addFadeInUpEffect() {
+        const elements = document.querySelectorAll('.hidden');
+        elements.forEach(element => {
+            if (isInViewport(element)) {
+                element.classList.remove('hidden');
+                element.classList.add('fade-in-up');
+            }
+        });
+    }
+
+    // Add the fade-in-up effect initially for elements in the viewport
+    addFadeInUpEffect();
+
+    // Add event listener for scroll event to trigger fade-in-up effect
+    window.addEventListener('scroll', addFadeInUpEffect);
+</script>
+</body>
+
+</html>

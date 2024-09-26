@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jama Masjid</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <link rel="stylesheet" href="../../places.css">
+</head>
+
+<body>
+  <div class="header" style="background-image: url(jama_masjid_bg.jpg); background-position: 50%;">
+    <h1>Jama Masjid</h1>
+
+  </div>
+
+  <div class="content">
+    <div class="content-details">
+
+      <p id="content">
+      <h2>HISTORY</h2>
+
+      According to accounts in the official court
+      chronicle, Shahjahannama, the Jama Masjid
+      originated from an imperial decree by Mughal
+      emperor Shah Jahan in the year 1637.
+      Shah Jahan ordered that a new mosque be built
+      in Agra, situated alongside a new chowk (plaza)
+      in front of the Agra Fort's Delhi gate. Shah
+      Jahan's eldest daughter, the princess Jahanara
+      Begum, requested permission from the emperor
+      to personally endow the new mosque, which was
+      granted.
+
+
+
+      </p>
+
+
+      <div id="show-more" class="hidden">
+
+      </div>
+      <div id="show-more-btn" class="show-more-btn" onclick="showMore()">
+        Know more
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <div class="content">
+    <div class="content-details">
+      <h2>TOURIST ATTRACTIONS</h2>
+
+      <p id="content">
+
+        The Jama Masjid of Agra is an early
+        example of imperial city-mosques endowed
+        during the reign of Shah Jahan.It is
+        primarily built of red sandstone,
+        with white marble used intermittently.
+        The mosque covers an area of 1200 square
+        metres, and is elevated above ground level
+        by a raised podium. Decoration on the
+        mosque structure consists of reliefs
+        and mouldings, executed in sandstone
+        with marble inlays. The mosque's
+        plan and elevation are similar to
+        that of the Wazir Khan Mosque,
+        another Mughal mosque of Shah Jahan,
+        built a decade prior in Lahore.
+
+
+      </p>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="content-details">
+      <h2>TIMINGS</h2>
+
+      <p id="content">
+
+        It is open on all days of the week.
+        There is no entry fee to visit Jama Masjid.
+        And timings are given below
+      <ul>
+        <li> Monday to Sunday-6:00 am – 8:00 pm</li>
+
+      </ul>
+
+
+
+
+      </p>
+    </div>
+  </div>
+
+
+  <div class="content">
+    <div class="content-details">
+      <h2>PHOTO GALLERY</h2>
+    </div>
+  </div>
+
+  <div class="full-img" id="fullImgBox">
+    <img src="JamaMasjid1.jpg" id="fullImg" />
+    <span onclick="closeFullImg()">&times;</span>
+  </div>
+  <div class="img-gallery">
+    <img src="JamaMasjid1.jpg" id='i1' onclick="openFullImg(this)" />
+    <img src="JamaMasjid2.jpg" id='i2' onclick="openFullImg(this)" />
+    <img src="JamaMasjid3.jpg" id='i3' onclick="openFullImg(this)" />
+    <img src="JamaMasjid5.jpg" id='i4' onclick="openFullImg(this)" />
+    <img src="jamamasjid6.cms" id='i5' onclick="openFullImg(this)" />
+    <img src="jama_masjid_bg.jpg" id='i6' onclick="openFullImg(this)" />
+  </div>
+
+  <div class="transport-section">
+    <h2>How to Get There</h2>
+    <div class="transport-method">
+      <img src="../bus.png" alt="Road Icon">
+      <div>
+        <p><strong>By Road</strong></p>
+        <p> One common bus station nearby is the Red Fort Bus Stop, which is about a 5-10 minute walk from Jama Masjid.
+        </p>
+      </div>
+    </div>
+    <div class="transport-method">
+      <img src="../train.png" alt="Train Icon">
+      <div>
+        <p><strong>By Train</strong></p>
+        <p>The nearest railway station to Jama Masjid is the Old Delhi Railway Station, also known as Delhi Junction. It
+          is one of the major railway stations in Delhi and is located approximately 1.5 to 2 kilometers away from Jama
+          Masjid</p>
+      </div>
+    </div>
+    <div class="transport-method">
+      <img src='../air.png' alt="Airplane Icon">
+      <div>
+        <p><strong>By Air</strong></p>
+        <p>
+          The nearest airport to Jama Masjid in Old Delhi, India, is the Indira Gandhi International Airport (DEL). It
+          is located in the southwestern part of Delhi, approximately 15 to 20 kilometers away from Jama Masjid</p>
+      </div>
+    </div>
+  </div>
+  <div class="container mt-5">
+    <h1>Where To Stay</h1>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="card">
+          <a 
+            href="https://www.makemytrip.com/hotels/hotel-details/?hotelId=201902121201497603&_uCurrency=INR&checkin=06032024&checkout=06112024&city=CTAGR&country=IN&lat=27.17904&lng=78.00851&locusId=CTAGR&locusType=city&mmPoiTag=LPOI%7CJama%20Masjid%7C%7C27.1830654%7C78.01614959999999&rank=1&reference=hotel&roomStayQualifier=2e0e&rsc=1e2e0e&searchText=Jama%20Masjid%2C%20Agra%2C%20Uttar%20Pradesh%2C%20IN&type=google&viewType=BUDGET&mtkeys=-6168699503777513498">
+            <img src="hotel1.png" class="card-img-top" alt="Placeholder Image">
+          </a>
+          <div class="card-body">
+            <h5 class="card-title">Jigyasa Palace</h5>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card">
+          <a 
+            href="https://www.makemytrip.com/hotels/hotel-details/?hotelId=201811281405306664&_uCurrency=INR&checkin=06032024&checkout=06112024&city=CTAGR&country=IN&lat=27.18438&lng=78.01964&locusId=CTAGR&locusType=city&mmPoiTag=LPOI%7CJama%20Masjid%7C%7C27.1830654%7C78.01614959999999&rank=2&reference=hotel&roomStayQualifier=2e0e&rsc=1e2e0e&searchText=Jama%20Masjid%2C%20Agra%2C%20Uttar%20Pradesh%2C%20IN&type=google&viewType=BUDGET&mtkeys=-6388337787585716888">
+            <img src="hotel2.png" class="card-img-top" alt="Placeholder Image">
+          </a>
+          <div class="card-body">
+            <h5 class="card-title">Hotel Marwari </h5>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card">
+          <a 
+            href="https://www.makemytrip.com/hotels/hotel-details/?hotelId=201411141544212537&_uCurrency=INR&checkin=06032024&checkout=06112024&city=CTAGR&country=IN&lat=27.185&lng=78.018&locusId=CTAGR&locusType=city&mmPoiTag=LPOI%7CJama%20Masjid%7C%7C27.1830654%7C78.01614959999999&rank=3&reference=hotel&roomStayQualifier=2e0e&rsc=1e2e0e&searchText=Jama%20Masjid%2C%20Agra%2C%20Uttar%20Pradesh%2C%20IN&type=google&viewType=BUDGET&mtkeys=3290974224412976696">
+            <img src="hotel3.png" class="card-img-top" alt="Placeholder Image">
+          </a>
+          <div class="card-body">
+            <h5 class="card-title">Hotel shree krishna vishnav
+            </h5>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="operator">
+    <h2>Registered Tourist Guides</h2>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="details">
+          <div class="labelHed">Tourist Guide</div>
+          <h4>Swetang Joshi</h4>
+          <table>
+            <tbody>
+              <tr>
+                <td>Mobile</td>
+                <td>
+                  9875551588
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="details">
+          <div class="labelHed">Tourist Guide</div>
+          <h4>Naman Ramaiya</h4>
+          <table>
+            <tbody>
+              <tr>
+                <td>Mobile</td>
+                <td>
+                  7785096963
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="details">
+          <div class="labelHed">Tourist Guide</div>
+          <h4>Meera Vaishnav</h4>
+          <table>
+            <tbody>
+              <tr>
+                <td>Mobile</td>
+                <td>
+                  7898456559
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="mapouter">
+    <div class="gmap_canvas"><iframe class="gmap_iframe" width="100%" frameborder="0" scrolling="no" marginheight="0"
+        marginwidth="0"
+        src="https://maps.google.com/maps?width=400&amp;height=400&amp;hl=en&amp;q=Jama masjid delhi&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe><a
+        href="https://embed-googlemap.com">embed google map</a></div>
+    <style>
+      .mapouter {
+        margin: auto;
+        text-align: right;
+        width: 80%;
+        height: 400px;
+      }
+
+      .gmap_canvas {
+        overflow: hidden;
+        background: none !important;
+        width: 100%;
+        height: 400px;
+      }
+
+      .gmap_iframe {
+        height: 400px !important;
+      }
+    </style>
+  </div>
+  <script>
+    function showMore() {
+      var contentDiv = document.getElementById("content");
+      var showMoreDiv = document.getElementById("show-more");
+      var showMoreBtn = document.getElementById("show-more-btn");
+
+      if (showMoreDiv.classList.contains("hidden")) {
+        // Fetch additional content dynamically here
+        var additionalContent = `
+          This was one of several reconstruction projects
+                of the period in Mughal Agra, 
+               and represented a renewed attempt at building
+                a congregational mosque for the city; 
+                the construction of one had commenced earlier
+                 by the Yamuna river, but this was interrupted 
+                 and abandoned when attention was diverted
+                  towards completing the Taj Mahal. 
+                  Ebba Koch suggests two possible reasons 
+                  for the shift in location to the area around 
+                  the fort; either the riverfront area was deemed more residential than religious, or the new mosque was feared to overshadow the Taj Mahal's mosque building. Wayne Begley provides the reason of
+           the older site being too distant from the city
+
+            `;
+        showMoreDiv.innerHTML = additionalContent;
+        showMoreDiv.classList.remove("hidden");
+        showMoreBtn.textContent = "";
+      } else {
+        showMoreDiv.classList.add("hidden");
+        showMoreBtn.textContent = "Know more";
+      }
+
+
+
+    } var fullImgBox = document.getElementById("fullImgBox");
+    var fullImg = document.getElementById("fullImg");
+    var xyz;
+    function openFullImg(pic) {
+      fullImgBox.style.display = "flex";
+      fullImg.src = pic.src;
+      xyz = document.getElementById(pic.id);
+      xyz.classList.add('close');
+    }
+
+    function closeFullImg(pic) {
+      fullImgBox.style.display = "none";
+      xyz.classList.remove('close')
+    }
+  </script>
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>

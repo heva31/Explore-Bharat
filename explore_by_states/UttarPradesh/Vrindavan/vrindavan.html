@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vrindavan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <link rel="stylesheet" href="../../places.css">
+</head>
+
+<body>
+  <div class="header" style="background-image: url(vrindavan-photo1.jpg); background-position: 50%;">
+    <h1>Vrindavan</h1>
+
+  </div>
+
+  <div class="content">
+    <div class="content-details">
+
+      <p id="content">
+      <h2>HISTORY</h2>
+
+      The town of Vrindavan in Mathura District
+      of Uttar Pradesh is as relevant to Hindus
+      of India as Krishna is to the great Indian
+      epic, the Mahabharata. Its religious and
+      mythological connotations are central to
+      the worship of Krishna in the pantheon
+      of Hindu gods. A precocious child, a trusted
+      friend, a performer of miracles,
+      a romantic lover and a saviour to all;
+      Vrindavan is deeply associated with the
+      life and times of Krishna and the tales
+      woven around his life.
+
+
+      </p>
+
+
+      <div id="show-more" class="hidden">
+
+      </div>
+      <div id="show-more-btn" class="show-more-btn" onclick="showMore()">
+        Know more
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <div class="content">
+    <div class="content-details">
+      <h2>TOURIST ATTRACTIONS</h2>
+
+      <p id="content">
+        Vrindavan is considered to be a sacred place for Vaisnavism tradition of Hinduism. It is believed that Krishna
+        spent part of his childhood in this city. The other prominent areas surrounding Vrindavan are Govardhana, Gokul,
+        Nandgaon, Barsana, Mathura and Bhandirvan.
+
+      </p>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="content-details">
+      <h2>TIMINGS</h2>
+
+      <p id="content">
+
+
+      <ul>
+        <li>Banke Bihari Temple:
+          <ul>
+            <li>Morning: 7:45 AM to 12:00 PM</li>
+            <li>Evening: 5:30 PM to 9:30 PM</li>
+          </ul>
+        </li>
+        <li>Prem Mandir:
+          <ul>
+            <li>Morning: 5:30 AM to 12:00 PM</li>
+            <li>Evening: 4:00 PM to 9:00 PM</li>
+          </ul>
+        </li>
+        <li>Radha Raman Temple:
+          <ul>
+            <li>Morning: 7:30 AM to 12:00 PM</li>
+            <li>Evening: 5:30 PM to 8:30 PM</li>
+          </ul>
+        </li>
+      </ul>
+
+      </p>
+    </div>
+  </div>
+
+
+  <div class="content">
+    <div class="content-details">
+      <h2>PHOTO GALLERY</h2>
+    </div>
+  </div>
+
+  <div class="full-img" id="fullImgBox">
+    <img src="Dwarka1.avif" id="fullImg" />
+    <span onclick="closeFullImg()">&times;</span>
+  </div>
+  <div class="img-gallery">
+    <img src="vrindavan-photo5.jpg" id="i1" onclick="openFullImg(this)" />
+    <img src="vrindavan-photo4.png" id="i2" onclick="openFullImg(this)" />
+    <img src="vrindavan-photo3.webp" id="i3" onclick="openFullImg(this)" />
+    <img src="vrindavan-photo2.webp" id="i4" onclick="openFullImg(this)" />
+    <img src="vrindavan-photo1.jpg" id="i5" onclick="openFullImg(this)" />
+    <img src="vrindavan-photo6.webp" id="i6" onclick="openFullImg(this)" />
+  </div>
+
+  <div class="transport-section">
+    <h2>How to Get There</h2>
+    <div class="transport-method">
+      <img src="../bus.png" alt="Road Icon">
+      <div>
+        <p><strong>By Road</strong></p>
+        <p>The nearest bus station to Ram Mandir in Vrindavan, Uttar Pradesh, India, is the Vrindavan Bus Stand. From
+          there, you can take a local transport option like a rickshaw or taxi to reach the Ram Mandir</p>
+      </div>
+    </div>
+    <div class="transport-method">
+      <img src="../train.png" alt="Train Icon">
+      <div>
+        <p><strong>By Train</strong></p>
+        <p>The nearest railway station to Vrindavan is Mathura Junction Railway Station (station code: MTJ). Mathura
+          Junction is one of the major railway stations in Uttar Pradesh and is well-connected to various cities across
+          India. From Mathura Junction, you can easily reach Vrindavan by hiring a taxi, taking a bus, or using other
+          local transportation options. The distance between Mathura Junction Railway Station and Vrindavan is
+          approximately 15 kilometers</p>
+      </div>
+    </div>
+    <div class="transport-method">
+      <img src='../air.png' alt="Airplane Icon">
+      <div>
+        <p><strong>By Air</strong></p>
+        <p>
+          The nearest airport to Vrindavan is the Agra Airport, officially known as Pandit Deen Dayal Upadhyay Airport
+          (IATA code: AGR). It's located in Agra, Uttar Pradesh, 65 kilometers from Vrindavan</p>
+      </div>
+    </div>
+  </div>
+  <div class="container mt-5">
+    <h1>Where To Stay</h1>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="card">
+          <a 
+            href="https://www.makemytrip.com/hotels/hotel-details/?hotelId=201708281259298354&_uCurrency=INR&checkin=06032024&checkout=06112024&city=CTVRIN&country=IN&lat=27.57334&lng=77.67618&locusId=CTVRIN&locusType=city&rank=1&reference=hotel&roomStayQualifier=2e0e&rsc=1e2e0e&searchText=Vrindavan&type=city&mtkeys=-4889649201841059248">
+            <img src="hotel1.png" class="card-img-top" alt="Placeholder Image">
+          </a>
+          <div class="card-body">
+            <h5 class="card-title">MVT Guesthouse & Restaurant
+            </h5>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card">
+          <a 
+            href="https://www.makemytrip.com/hotels/hotel-details/?hotelId=20130504140408935&_uCurrency=INR&checkin=06032024&checkout=06112024&city=CTVRIN&country=IN&lat=27.56485&lng=77.6564&locusId=CTVRIN&locusType=city&rank=2&reference=hotel&roomStayQualifier=2e0e&rsc=1e2e0e&searchText=Vrindavan&type=city&viewType=PREMIUM&mtkeys=-9076821946354659239">
+            <img src="hotel2.png" class="card-img-top" alt="Placeholder Image">
+          </a>
+          <div class="card-body">
+            <h5 class="card-title">Nidhivan Sarovar Portico-Vrindavan </h5>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card">
+          <a 
+            href="https://www.makemytrip.com/hotels/hotel-details/?hotelId=201409291532025932&_uCurrency=INR&checkin=06032024&checkout=06112024&city=CTVRIN&country=IN&lat=27.57813&lng=77.66666&locusId=CTVRIN&locusType=city&rank=4&reference=hotel&roomStayQualifier=2e0e&rsc=1e2e0e&searchText=Vrindavan&type=city&viewType=BUDGET&mtkeys=-8127971847669070666">
+            <img src="hotel3.png" class="card-img-top" alt="Placeholder Image">
+          </a>
+          <div class="card-body">
+            <h5 class="card-title">Hare Krishna Orchid </h5>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="operator">
+    <h2>Registered Tourist Guides</h2>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="details">
+          <div class="labelHed">Tourist Guide</div>
+          <h4>Mangal Gadhvi</h4>
+          <table>
+            <tbody>
+              <tr>
+                <td>Mobile</td>
+                <td>
+                  7899874563
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="details">
+          <div class="labelHed">Tourist Guide</div>
+          <h4>Divyang P Samdani</h4>
+          <table>
+            <tbody>
+              <tr>
+                <td>Mobile</td>
+                <td>
+                  8887752136
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="details">
+          <div class="labelHed">Tourist Guide</div>
+          <h4>Shiva Patel</h4>
+          <table>
+            <tbody>
+              <tr>
+                <td>Mobile</td>
+                <td>
+                  9963365225
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="mapouter">
+    <div class="gmap_canvas"><iframe class="gmap_iframe" width="100%" frameborder="0" scrolling="no" marginheight="0"
+        marginwidth="0"
+        src="https://maps.google.com/maps?width=400&amp;height=400&amp;hl=en&amp;q=Vridavan uttar pradesh&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe><a
+        href="https://embed-googlemap.com">embed google map</a></div>
+    <style>
+      .mapouter {
+        margin: auto;
+        text-align: right;
+        width: 80%;
+        height: 400px;
+      }
+
+      .gmap_canvas {
+        overflow: hidden;
+        background: none !important;
+        width: 100%;
+        height: 400px;
+      }
+
+      .gmap_iframe {
+        height: 400px !important;
+      }
+    </style>
+  </div>
+  <script>
+    function showMore() {
+      var contentDiv = document.getElementById("content");
+      var showMoreDiv = document.getElementById("show-more");
+      var showMoreBtn = document.getElementById("show-more-btn");
+
+      if (showMoreDiv.classList.contains("hidden")) {
+        // Fetch additional content dynamically here
+        var additionalContent = `
+          Vrindavan is located about 10 kilometres away from Mathura, on the Delhi-Agra National Highway. Mathura is Krishna’s birthplace and is one of the seven holy cities for Hindu pilgrimage but Vrindavan was the site of an ancient, dense forest where Krishna spent much of his youth and adult years. Vrindavan also finds mention in the Hindu epic Mahabharata.
+
+Folklore and recorded evidence of Krishna’s life and his childhood shows us that he was raised in the village of Gokul near Vrindavan by his foster parents, Yashoda and Nanda. Vrindavan was the site of Krishna’s early childhood; the dense forests were ideal for him and his brother Balarama to play games and indulge in childhood pranks and pastimes with other children from Gokul.
+
+            `;
+        showMoreDiv.innerHTML = additionalContent;
+        showMoreDiv.classList.remove("hidden");
+        showMoreBtn.textContent = "";
+      } else {
+        showMoreDiv.classList.add("hidden");
+        showMoreBtn.textContent = "Know more";
+      }
+
+
+
+    }
+    var fullImgBox = document.getElementById("fullImgBox");
+    var fullImg = document.getElementById("fullImg");
+    var xyz;
+    function openFullImg(pic) {
+      fullImgBox.style.display = "flex";
+      fullImg.src = pic.src;
+      xyz = document.getElementById(pic.id);
+      xyz.classList.add('close');
+    }
+
+    function closeFullImg(pic) {
+      fullImgBox.style.display = "none";
+      xyz.classList.remove('close')
+    }
+  </script>
+</body>
+
+</html>
