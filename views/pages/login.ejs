@@ -1,0 +1,28 @@
+<% layout('boilerplate') %>
+
+<body style="background-image:url('images/3040791.jpg'); background-attachment: fixed; background-position: center;">
+  
+  <section class="form-section">
+    <h2>Login to Your Account</h2>
+
+    <form class="auth-form" action="/login" method="POST">
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" required placeholder="Enter your email">
+
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" required placeholder="Enter your password">
+
+      <button type="submit" class="btn">Login</button>
+
+      <div id="auth-account">
+        <p>or continue with</p>
+        <a href="/auth/google">
+            <img src="/images/google.png" alt="Google">
+            <div>Login with Google</div>
+        </a>
+      </div>
+
+      <p>Don't have an account? <a href="/signup">Sign up here</a></p>
+    </form>
+  </section>
+</body>

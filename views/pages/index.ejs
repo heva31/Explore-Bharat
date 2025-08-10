@@ -1,0 +1,224 @@
+<% layout('boilerplate') %>
+
+<section style="background-image:url('images/3040791.jpg'); background-attachment: fixed; background-position: center;">
+
+  <div class="decorative-div">
+    <a href="/"><img src="images/explore-bharat-high-resolution-logo-transparent (1).png" alt="Logo"
+        class="logo"></a>
+    <div class="content-index">
+      <h2 id="welcome">Welcome to Explore Bharat</h2>
+      <p id="welcome_text">Your ultimate guide to exploring the wonders of India</p>
+    </div>
+  </div>
+
+  <div id="places_outer" class="">
+
+    <div id="places_carousel_back" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="images/statue-of-unity/sou_updated.jpg" class="d-block w-100" alt="Slide 1">
+        </div>
+        <div class="carousel-item">
+          <img src="images/taj_updated.jpg" class="d-block w-100" alt="Slide 2">
+        </div>
+        <div class="carousel-item">
+          <img src="images/gulmarg.jpg" class="d-block w-100" alt="Slide 3">
+        </div>
+        <div class="carousel-item">
+          <img src="images/goa_updated.jpg" class="d-block w-100" alt="Slide 4">
+        </div>
+        <div class="carousel-item">
+          <img src="images/kumbhalgarh_updated.jpg" class="d-block w-100" alt="Slide 5">
+        </div>
+      </div>
+    </div>
+
+    <div id="places_carousel" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#places_carousel" data-bs-slide-to="0" class="active" aria-current="true"
+          aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#places_carousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#places_carousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        <button type="button" data-bs-target="#places_carousel" data-bs-slide-to="3" aria-label="Slide 4"></button>
+        <button type="button" data-bs-target="#places_carousel" data-bs-slide-to="4" aria-label="Slide 5"></button>
+      </div>
+      <div class="carousel-inner">
+        <div class="carousel-item active" onclick="openPage('/places/statue-of-unity')">
+          <img src="images/statue-of-unity/sou_updated.jpg" class="d-block w-100" alt="Slide 1">
+          <div class="carousel-caption">
+            <h5>STATUE OF UNITY</h5>
+          </div>
+        </div>
+        <div class="carousel-item" onclick="openPage('/places/taj-mahal')">
+          <img src="images/taj_updated.jpg" class="d-block w-100" alt="Slide 2">
+          <div class="carousel-caption">
+            <h5>TAJ MAHAL</h5>
+          </div>
+        </div>
+        <div class="carousel-item" onclick="openPage('/places/gulmarg')">
+          <img src="images/gulmarg.jpg" class="d-block w-100" alt="Slide 3">
+          <div class="carousel-caption">
+            <h5>GULMARG</h5>
+          </div>
+        </div>
+        <div class="carousel-item" onclick="openPage('/places/baga-beach')">
+          <img src="images/goa_updated.jpg" class="d-block w-100" alt="Slide 4">
+          <div class="carousel-caption">
+            <h5>BAGA BEACH</h5>
+          </div>
+        </div>
+        <div class="carousel-item" onclick="openPage('places/kumbhalgarh')">
+          <img src="images/kumbhalgarh_updated.jpg" class="d-block w-100" alt="Slide 5">
+          <div class="carousel-caption">
+            <h5>KUMBHALGARH</h5>
+          </div>
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#places_carousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#places_carousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  </div>
+  <div class="container distributionDiv row ">
+    <div class="image-container col-md-4 hidden" onclick="openPage('/category/historical')">
+      <div class="overlay">
+        <h2 style="color:white;">
+          Historical Places
+        </h2>
+      </div>
+      <h1>Historical Places</h1>
+      <img class="image  mx-auto d-block" src="images/historic.jpg" alt="Your Image">
+    </div>
+
+    <div class="image-container col-md-4 hidden" onclick="openPage('/category/hill-station')">
+      <div class="overlay">
+        <h2 style="color:white;">
+          Hill Stations
+        </h2>
+      </div>
+      <h1>Hill Stations</h1>
+      <img class="image mx-auto d-block" src="images/hillstation.png" alt="Your Image">
+    </div>
+
+    <div class="image-container col-md-4 hidden" onclick="openPage('/category/religious')">
+      <div class="overlay">
+        <h2 style="color:white;">
+          Religious Places
+        </h2>
+      </div>
+      <h1>Religious Places</h1>
+      <img class="image mx-auto d-block" src="images/religious.jpg" alt="Your Image">
+    </div>
+  </div>
+
+  <div class="state-cards ">
+    <h2 class="text-center mt-5">Featured States</h2>
+    <div class="card-container mt-4 hidden">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Gujarat</h5>
+          <hr>
+          <p class="card-text">Gujarat, located in western India, is celebrated for its rich cultural heritage, vibrant
+            festivals, and delectable cuisine. With a blend of historical monuments, scenic landscapes, and bustling
+            cities, it offers a diverse experience for travelers.</p>
+          <button class="btn" onclick="openPage('/states/gujarat')">
+            View More
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="card-container mt-4 hidden">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Rajasthan</h5>
+          <hr>
+          <p class="card-text">Rajasthan, the land of kings, boasts majestic forts, opulent palaces, and vibrant
+            bazaars. With its rich history, colorful traditions, and expansive deserts, it mesmerizes visitors with its
+            royal charm and cultural extravaganza.</p>
+          <button class="btn" onclick="openPage('/states/rajasthan')">
+            View More
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="card-container mt-4 hidden">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Goa</h5>
+          <hr>
+          <p class="card-text">Goa, known for its picturesque beaches, Portuguese architecture, and lively nightlife, is
+            a paradise for beach lovers and party enthusiasts. With its laid-back vibe, coconut groves, and seafood
+            delicacies, it offers a relaxing getaway by the sea.</p>
+          <button class="btn" onclick="openPage('/states/goa')">
+            View More
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="card-container mt-4 hidden">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Kashmir</h5>
+          <hr>
+          <p class="card-text">Kashmir, often called heaven on earth, captivates with its stunning landscapes, serene
+            lakes, and snow-capped mountains. Known for its rich culture, warm hospitality, and traditional handicrafts,
+            it's a dream destination for nature lovers and adventurers.</p>
+          <button class="btn" onclick="openPage('states/kashmir')">
+            View More
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="card-container mt-4 hidden">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Uttar Pradesh</h5>
+          <hr>
+          <p class="card-text">Uttar Pradesh, steeped in history and spirituality, is home to iconic landmarks like the
+            Taj Mahal, Varanasi, and Ayodhya. With its vibrant festivals, sacred sites, and mouthwatering cuisine, it
+            offers a rich tapestry of culture and heritage.</p>
+          <button class="btn" onclick="openPage('states/up')">
+            View More
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+  <script>
+    // Function to check if an element is in the viewport
+    function isInViewport(element) {
+        const rect = element.getBoundingClientRect();
+        return (
+            rect.top >= 0 &&
+            rect.left >= 0 &&
+            rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+            rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+        );
+    }
+
+    // Function to add the fade-in-up effect to elements when they are in the viewport
+    function addFadeInUpEffect() {
+        const elements = document.querySelectorAll('.hidden');
+        elements.forEach(element => {
+            if (isInViewport(element)) {
+                element.classList.remove('hidden');
+                element.classList.add('fade-in-up');
+            }
+        });
+    }
+
+    // Add the fade-in-up effect initially for elements in the viewport
+    addFadeInUpEffect();
+
+    // Add event listener for scroll event to trigger fade-in-up effect
+    window.addEventListener('scroll', addFadeInUpEffect);
+</script>
+</section>

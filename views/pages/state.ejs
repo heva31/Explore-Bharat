@@ -1,0 +1,41 @@
+<% layout('boilerplate') %>
+
+<head>
+    <link rel="stylesheet" href="/css/state.css">
+</head>
+
+<body>
+    <div id="state-div">
+        <div id="state-name"><%= states[0].name %></div>
+        <div id="state-info"><%= states[0].description %></div>
+    </div>
+    
+    <div id="explore-state">
+        Explore famous places in <%= states[0].name %>
+    </div>
+    
+    <% places.forEach((result, index) => { %>
+    <div class="o-div row">
+        <% if(index % 2 === 0) { %>
+            <div class="d1 col-md-6">
+                <img src="<%= result.state_page_image %>" alt="Image Not Found" onclick="openPage('/places/<%= result.slug %>')">
+            </div>
+            <div class="d2 col-md-6">
+                <div class="place_name"><%= result.name %></div>
+                <p><%= result.description %></p>
+                <button class="btn" onclick="openPage('/places/<%= result.slug %>')">View More</button>
+            </div>
+        <% } else { %>
+            <div class="d1 col-md-6 order-md-1 order-2">
+                <div class="place_name"><%= result.name %></div>
+                <p><%= result.description %></p>
+                <button class="btn" onclick="openPage('/places/<%= result.slug %>')">View More</button>
+            </div>
+            <div class="d2 col-md-6 order-md-2 order-1">
+                <img src="<%= result.state_page_image %>" alt="Image Not Found" onclick="openPage('/places/<%= result.slug %>')">
+            </div>
+        <% } %>
+    </div>
+    <hr>
+    <% }) %>
+</body>

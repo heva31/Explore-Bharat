@@ -1,0 +1,49 @@
+<% layout('boilerplate') %>
+
+<head>
+    <link rel="stylesheet" href="/css/inquiry.css">
+</head>
+
+<body>
+
+    <div class="container" id="c2">
+        <div class="booking-form">
+            <h2 class="text-center">Ask About a Destination</h2>
+            <hr>
+            <form action="/inquiry" method="POST">
+                <div class="mb-3">
+                    <input type="text" class="form-control form-input" name="name" placeholder="Full Name" value="<%= user ? user.name : " " %>" required>
+                </div>
+                <div class="mb-3">
+                    <input type="email" class="form-control form-input" name="email" placeholder="Email Address" value="<%= user ? user.email : " " %>" required>
+                </div>
+                <div class="mb-3">
+                    <select class="form-select form-input" name="destination" required>
+                        <option selected disabled>Select a Destination</option>
+                        <% destinations.forEach(dest => { %>
+                            <option value="<%= dest.name %>"><%= dest.name %></option>
+                        <% }); %>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <select class="form-select form-input" name="inquiryType" required>
+                        <option selected disabled>Type of Inquiry</option>
+                        <option value="Suggestions">Travel Suggestions</option>
+                        <option value="Stay">Accommodation Help</option>
+                        <option value="Guidance">Local Guidance</option>
+                        <option value="General">General Question</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <textarea class="form-control form-input" name="message" rows="4" placeholder="Describe your inquiry..." required></textarea>
+                </div>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-success">Submit Inquiry</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</body>
+
+</html>

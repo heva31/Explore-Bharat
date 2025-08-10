@@ -1,0 +1,32 @@
+{
+  "name": "explore-bharat",
+  "version": "1.0.0",
+  "description": "<h1>Explore Bharat</h1> Explore Bharat is a responsive tourism website designed to offer an engaging experience for users interested in exploring various destinations across India. Built using HTML, CSS, and JavaScript, this website provides detailed insights into tourist spots, cultural highlights, and travel tips. <br> <br> The goal of Explore Bharat is to provide a one-stop solution for travelers and tourists looking to explore the rich cultural heritage, diverse landscapes, and unique experiences that India has to offer. The website caters to all kinds of travelers, from adventure seekers to culture enthusiasts. <br> <br> <br> <h2>Features</h2> Responsive Design: Compatible with desktops, tablets, and mobile devices.<br> Destination Information: Detailed descriptions of popular and offbeat destinations.<br> Interactive Elements: User-friendly interface with interactive elements powered by JavaScript.<br> Photo Gallery: A gallery showcasing the beauty and diversity of Indian landscapes.<br> Contact Form: Allows users to reach out with inquiries or feedback.<br> <br> <br> <br> <h2>Tech Stack</h2> <h3>Frontend:</h3> HTML5, CSS3, JavaScript <h3>Libraries:</h3> Bootstrap 5 (for styling and layout), Google Fonts",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "author": "Divy Patel",
+  "license": "ISC",
+  "dependencies": {
+    "@google/generative-ai": "^0.24.0",
+    "bcrypt": "^5.1.1",
+    "connect-flash": "^0.1.1",
+    "dotenv": "^16.4.7",
+    "ejs": "^3.1.10",
+    "ejs-mate": "^4.0.0",
+    "express": "^5.1.0",
+    "express-session": "^1.18.1",
+    "fs-extra": "^11.3.0",
+    "method-override": "^3.0.0",
+    "multer": "^1.4.5-lts.2",
+    "mysql2": "^3.14.0",
+    "node-fetch": "^2.7.0",
+    "nodemailer": "^6.10.1",
+    "passport": "^0.7.0",
+    "passport-google-oauth2": "^0.2.0",
+    "path": "^0.12.7",
+    "slugify": "^1.6.6"
+  }
+}

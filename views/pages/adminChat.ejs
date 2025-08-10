@@ -1,0 +1,147 @@
+<% layout('boilerplateAdmin') %>
+
+<style>
+  .section-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #003049;
+  }
+
+  .chat-window {
+    height: 400px;
+    overflow-y: auto;
+    border-bottom: 1px solid #ddd;
+    padding: 10px;
+    background: #fff;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .chat-message {
+    margin: 10px;
+    padding: 10px 15px;
+    border-radius: 20px;
+    max-width: 70%;
+    font-size: 16px;
+    word-wrap: break-word;
+  }
+
+  .user {
+    background-color: #007bff;
+    color: white;
+    margin-left: auto;
+    text-align: right;
+    border-radius: 20px 20px 0 20px;
+  }
+
+  .admin {
+    background-color: #f1f1f1;
+    color: black;
+    margin-right: auto;
+    text-align: left;
+    border-radius: 20px 20px 20px 0;
+  }
+
+  .tick {
+    font-size: 0.85rem;
+    margin-left: 5px;
+    vertical-align: middle;
+  }
+
+  .tick-single {
+    color: black;
+  }
+
+  .tick-double {
+    color: greenyellow;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+</style>
+
+<section class="container mt-5">
+  <div class="container">
+    <div class="text-center mb-5">
+      <a href="/" class="d-inline-block mb-3">
+        <img src="/images/explore-bharat-high-resolution-logo-transparent (1).png" alt="Explore Bharat" style="height: 70px;">
+      </a>
+      <h1 class="section-title">Chat with <%= user.name %></h1>
+    </div>
+
+    <div class="chatbot-container card shadow-lg p-4" style="border-radius: 20px; background: #fff;">
+      <div class="chat-window" id="chat-window">
+        <!-- Messages will load here -->
+      </div>
+
+      <form id="chat-form" class="d-flex mt-3">
+        <input type="text" id="chat-input" name="message" class="form-control me-2" placeholder="Type your message..." autocomplete="off" style="border-radius: 20px;">
+        <input type="hidden" id="user-id" value="<%= user.id %>">
+        <button id="chat-send" type="submit" class="btn btn-primary" style="border-radius: 20px;">Send</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Send message
+  document.getElementById('chat-form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const message = document.getElementById('chat-input').value.trim();
+    const userId = document.getElementById('user-id').value;
+
+    if (!message) return;
+
+    await fetch('/admin/chat/send', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ userId, message })
+    });
+
+    document.getElementById('chat-input').value = '';
+    loadMessages();
+  });
+
+  // Load messages
+  async function loadMessages() {
+    const userId = document.getElementById('user-id').value;
+
+    const res = await fetch(`/admin/chat/messages/${userId}`);
+    const data = await res.json();
+    const chatWindow = document.getElementById('chat-window');
+
+    if (data.success) {
+      chatWindow.innerHTML = '';
+
+      data.messages.forEach(msg => {
+        const div = document.createElement('div');
+        div.classList.add('chat-message', msg.sender === 'admin' ? 'user' : 'admin');
+
+        let ticks = '';
+        if (msg.sender === 'admin') {
+          ticks = msg.is_read
+            ? '<span class="tick tick-double">✔✔</span>'
+            : '<span class="tick tick-single">✔</span>';
+        }
+
+        div.innerHTML = `
+          <p>${msg.message}</p>
+          <div class="d-flex justify-content-end align-items-center gap-1">
+            <small>${new Date(msg.created_at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</small>
+            ${ticks}
+          </div>
+        `;
+        chatWindow.appendChild(div);
+      });
+
+      chatWindow.scrollTop = chatWindow.scrollHeight;
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', loadMessages);
+  setInterval(loadMessages, 2000);
+</script>

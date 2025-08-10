@@ -1,0 +1,196 @@
+<% layout('boilerplate') %>
+
+<section style="background-image: url('/images/3040791.jpg'); background-size: cover; background-position: center; padding: 60px 0;">
+  <div class="container">
+    <div class="text-center mb-5">
+      <a href="/" class="d-inline-block mb-3">
+        <img src="/images/explore-bharat-high-resolution-logo-transparent (1).png" alt="Explore Bharat" style="height: 70px;">
+      </a>
+      <h1 class="section-title">Chat with Explore Bharat AI</h1>
+      <p class="section-subtitle">Ask about destinations, recommendations, or anything else!</p>
+      <button id="new-chat" class="btn btn-danger mt-2">Start New Chat</button>
+    </div>
+
+    <!-- Chat Container -->
+    <div class="chatbot-container card shadow-lg p-4" style="border-radius: 20px; background: #ffffffcc; backdrop-filter: blur(10px);">
+      <div class="chat-window" id="chat-window" style="height: 400px; overflow-y: auto; border-bottom: 1px solid #ddd; padding: 10px; background: #fff; border-radius: 15px;">
+        <!-- Chat messages will appear here -->
+      </div>
+
+      <form id="chat-form" class="chat-form mt-3 d-flex">
+        <input type="text" id="chat-input" name="message" class="form-control me-2" placeholder="Type your message..." autocomplete="off" style="border-radius: 20px;">
+        <button id="chat-send" type="submit" class="btn btn-primary" style="border-radius: 20px;">Send</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<style>
+/* Titles */
+.section-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #003049;
+}
+
+.section-subtitle {
+  font-size: 1.2rem;
+  color: #555;
+}
+
+.chat-window {
+  height: 400px;
+  overflow-y: auto;
+  border-bottom: 1px solid #ddd;
+  padding: 10px;
+  background: #fff;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Chat message common styles */
+.chat-message {
+  margin-bottom: 10px;
+  padding: 10px 15px;
+  border-radius: 20px;
+  max-width: 70%;
+  font-size: 16px;
+  line-height: 1.4;
+  word-wrap: break-word;
+  animation: fadeIn 0.5s ease;
+}
+
+.user {
+  background-color: #007bff;
+  color: white;
+  margin-left: auto;
+  text-align: right;
+  border-radius: 20px 20px 0 20px;
+}
+
+.bot {
+  background-color: #f1f1f1;
+  color: #333;
+  margin-right: auto;
+  text-align: left;
+  border-radius: 20px 20px 20px 0;
+}
+
+/* Typing Indicator */
+.typing {
+  font-style: italic;
+  color: #888;
+  margin: 10px;
+  text-align: left;
+  animation: fadeIn 0.5s ease infinite alternate;
+}
+
+/* Fade In animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Buttons */
+.btn-danger {
+  background-color: #e63946;
+  border: none;
+}
+.btn-danger:hover {
+  background-color: #d62828;
+}
+</style>
+
+<script>
+// Send user message
+document.getElementById('chat-form').addEventListener('submit', async (event) => {
+    event.preventDefault();
+
+    const userMessage = document.getElementById('chat-input').value.trim();
+    if (!userMessage) return;
+
+    appendMessage('user', userMessage);
+    document.getElementById('chat-input').value = '';
+
+    await sendMessage(userMessage);
+});
+
+// Handle new chat
+document.getElementById('new-chat').addEventListener('click', async () => {
+    document.getElementById('chat-window').innerHTML = '';
+    await fetch('/chatbot/clear', { method: 'POST' });
+    sendWelcomeMessage();
+});
+
+// Append message to window
+function appendMessage(role, message) {
+    const chatWindow = document.getElementById('chat-window');
+    const messageDiv = document.createElement('div');
+    messageDiv.classList.add('chat-message', role);
+
+    // Handle formatting
+    let formattedMessage = message
+        .replace(/\n/g, '<br>')
+        .replace(/\*\*(.*?)\*\*/g, '<b>$1</b>')
+        .replace(/\* (.*?)\*•/g, '• $1<br>')
+        .replace(/\* (.*?)\*/g, '• $1')
+        .replace(/\*•/g, '');
+
+    messageDiv.innerHTML = `<strong>${role === 'user' ? 'You' : 'AI'}:</strong><br>${formattedMessage}`;
+    chatWindow.appendChild(messageDiv);
+
+    // Smooth scroll to bottom
+    chatWindow.scroll({
+        top: chatWindow.scrollHeight,
+        behavior: 'smooth'
+    });
+}
+
+// Typing indicator
+function showTyping() {
+    const chatWindow = document.getElementById('chat-window');
+    const typingDiv = document.createElement('div');
+    typingDiv.classList.add('typing');
+    typingDiv.id = 'typing-indicator';
+    typingDiv.innerText = 'AI is typing...';
+    chatWindow.appendChild(typingDiv);
+    chatWindow.scrollTop = chatWindow.scrollHeight;
+}
+
+function removeTyping() {
+    const typingDiv = document.getElementById('typing-indicator');
+    if (typingDiv) typingDiv.remove();
+}
+
+// Send user message to server and get AI response
+async function sendMessage(userMessage) {
+    try {
+        showTyping();
+
+        const response = await fetch('/chatbot', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ message: userMessage })
+        });
+
+        const data = await response.json();
+        removeTyping();
+        appendMessage('bot', data.response);
+    } catch (error) {
+        console.error('Error sending message:', error);
+        removeTyping();
+        appendMessage('bot', 'Sorry, something went wrong.');
+    }
+}
+
+// Send the first welcome message
+function sendWelcomeMessage() {
+    const welcomeText = "Hi! 👋 I'm Explore Bharat AI. How can I assist you today?";
+    appendMessage('bot', welcomeText);
+}
+
+// When page loads, send first AI message
+window.addEventListener('DOMContentLoaded', sendWelcomeMessage);
+</script>

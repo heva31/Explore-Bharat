@@ -1,0 +1,69 @@
+<% layout('boilerplateAdmin') %>
+
+<link rel="stylesheet" href="https://cdn.datatables.net/2.2.2/css/dataTables.dataTables.css" />
+
+<div class="container mt-5">
+    <h2 class="mb-4">Manage Places</h2>
+
+    <div class="table-responsive">
+        <table id="placesTable" class="display">
+            <thead>
+                <tr>
+                    <th>Sr.No.</th>
+                    <th>Name</th>
+                    <th>Image</th>
+                    <th>State</th>
+                    <th>Category</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% if (places.length > 0) { %>
+                    <% places.forEach((place, index) => { %>
+                        <tr>
+                            <td><b><%= index + 1 %></b></td>
+                            <td><b><%= place.name %></b></td>
+                            <td>
+                                <img src="<%= place.state_page_image %>" alt="Banner" style="width: 300px; height: auto;">
+                            </td>
+                            <td><%= place.state_name %></td>
+                            <td><%= place.category_name %></td>
+                            <td>
+                                <a href="/admin/editPlace/<%= place.id %>" class="btn btn-sm btn-outline-primary edit-btn"><i class="fa-solid fa-pen-to-square"></i> Edit</a>
+                            </td>
+                        </tr>
+                    <% }) %>
+                <% } else { %>
+                    <tr>
+                        <td colspan="5" class="text-center">No places found.</td>
+                    </tr>
+                <% } %>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+<script src="https://cdn.datatables.net/2.2.2/js/dataTables.js"></script>
+<script>
+    new DataTable('#placesTable');
+
+    $(document).on('click', '.edit-btn', function(e) {
+        e.preventDefault();
+        const href = $(this).attr('href');
+
+        Swal.fire({
+            title: 'Are you sure, You want to edit details?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, Edit it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = href;
+            }
+        });
+    });
+</script>

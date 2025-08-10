@@ -1,0 +1,160 @@
+<% layout('boilerplate') %>
+
+<style>
+    /* Titles */
+    .section-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #003049;
+    }
+
+    .chat-window {
+    height: 400px;
+    overflow-y: auto;
+    border-bottom: 1px solid #ddd;
+    padding: 10px;
+    background: #fff;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    }
+
+    .chat-message {
+      margin: 10px;
+      padding: 10px 15px;
+      border-radius: 20px;
+      max-width: 70%;
+      font-size: 16px;
+      word-wrap: break-word;
+    }
+    
+    .user {
+      background-color: #007bff;
+      color: white;
+      margin-left: auto;
+      text-align: right;
+      border-radius: 20px 20px 0 20px;
+    }
+    
+    .admin {
+      background-color: #f1f1f1;
+      color: black;
+      margin-right: auto;
+      text-align: left;
+      border-radius: 20px 20px 20px 0;
+    }
+
+    .tick {
+      font-size: 0.85rem;
+      margin-left: 5px;
+      vertical-align: middle;
+    }
+
+    .tick-single {
+      color: black;
+    }
+
+    .tick-double {
+      color: greenyellow;
+    }
+
+    /* Fade In animation */
+    @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+    }
+</style>
+
+<section style="background-image: url('/images/3040791.jpg'); background-size: cover; background-position: center; padding: 60px 0;">
+  <div class="container">
+    <div class="text-center mb-5">
+        <a href="/" class="d-inline-block mb-3">
+          <img src="/images/explore-bharat-high-resolution-logo-transparent (1).png" alt="Explore Bharat" style="height: 70px;">
+        </a>
+        <h1 class="section-title">Chat with Admin</h1>
+      </div>
+    <div class="chatbot-container card shadow-lg p-4" style="border-radius: 20px; background: #fff;">
+      <div class="chat-window" id="chat-window" style="height: 400px; overflow-y: auto;">
+        <!-- Messages will load here -->
+      </div>
+
+      <form id="chat-form" class="d-flex mt-3">
+        <input type="text" id="chat-input" class="form-control me-2" placeholder="Type your message..." autocomplete="off" style="border-radius: 20px;">
+        <button type="submit" class="btn btn-primary" style="border-radius: 20px;">Send</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<script>
+const userId = "<%= userId %>";
+
+// Load chats
+async function loadChats() {
+    try {
+        const response = await fetch(`/chat/${userId}`);
+        const data = await response.json();
+        const chatWindow = document.getElementById('chat-window');
+        chatWindow.innerHTML = '';
+
+        data.chats.forEach(chat => {
+            const messageDiv = document.createElement('div');
+            messageDiv.classList.add('chat-message');
+            messageDiv.classList.add(chat.sender === 'user' ? 'user' : 'admin');
+
+            let ticks = '';
+            if (chat.sender === 'user') {
+              ticks = chat.is_read
+                ? '<span class="tick tick-double">✔✔</span>'
+                : '<span class="tick tick-single">✔</span>';
+            }
+
+            messageDiv.innerHTML = `
+            <p>${chat.message}</p>
+            <div class="d-flex justify-content-end align-items-center gap-1">
+              <small>${new Date(chat.created_at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</small>
+              ${ticks}
+            </div>
+          `;
+            chatWindow.appendChild(messageDiv);
+        });
+
+        // Scroll to bottom
+        chatWindow.scrollTop = chatWindow.scrollHeight;
+    } catch (error) {
+        console.error('Error loading chats:', error);
+    }
+}
+
+// Send new message
+document.getElementById('chat-form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const chatInput = document.getElementById('chat-input');
+    const message = chatInput.value.trim();
+
+    if (!message) return;
+
+    try {
+        await fetch('/chat/send', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                user_id: userId,
+                admin_id: 1,
+                sender: 'user',
+                message: message
+            })
+        });
+
+        chatInput.value = '';
+        await loadChats();
+    } catch (error) {
+        console.error('Error sending message:', error);
+    }
+});
+
+// Auto-load chats when page open
+document.addEventListener('DOMContentLoaded', loadChats);
+setInterval(loadChats, 2000);
+</script>

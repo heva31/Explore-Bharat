@@ -1,0 +1,36 @@
+<% layout('boilerplate') %>
+
+<link rel="stylesheet" href="/css/place.css">
+
+<div class="header" style="background-image: url(<%= blog.thumbnail %>);">
+    <h1><%= blog.title %></h1>
+</div>
+
+<div class="content">
+    <div class="content-details">
+        <h2>Content</h2>
+        <p id="content" class="collapsed-content">
+            <%= blog.content %>
+        </p>
+
+        <div id="show-more-btn" class="show-more-btn" onclick="toggleContent()">
+            Know more
+        </div>
+    </div>
+</div>
+
+<script>
+    function toggleContent() {
+        const content = document.getElementById('content');
+        const button = document.getElementById('show-more-btn');
+    
+        content.classList.toggle('expanded-content');
+        content.classList.toggle('collapsed-content');
+
+        if (content.classList.contains('expanded-content')) {
+            button.textContent = 'Show less';
+        } else {
+            button.textContent = 'Know more';
+        }
+    }
+</script>

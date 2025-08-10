@@ -1,0 +1,55 @@
+<% layout('boilerplateAdmin') %>
+
+<!-- DataTables CSS -->
+<link rel="stylesheet" href="https://cdn.datatables.net/2.2.2/css/dataTables.dataTables.css" />
+
+<div class="container mt-5">
+  <h2 class="mb-4">Admin Dashboard</h2>
+
+  <div class="table-responsive">
+    <table id="inquiryTable" class="display">
+      <thead>
+        <tr>
+          <th>Sr.No.</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Destination</th>
+          <th>Inquiry Type</th>
+          <th>Message</th>
+          <th>Date</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% if (inquiries.length > 0) { %>
+          <% inquiries.forEach((inq) => { %>
+            <tr>
+              <td><%= inq.id %></td>
+              <td><%= inq.name %></td>
+              <td><%= inq.email %></td>
+              <td><%= inq.destination %></td>
+              <td><%= inq.inquiry_type %></td>
+              <td><%= inq.message %></td>
+              <td><%= new Date(inq.created_at).toLocaleDateString('en-US', { month: 'short', day: '2-digit', year: 'numeric' }) %></td>
+
+              <td>
+                <a href="/admin/chat/<%= inq.user_id %>" class="btn btn-sm btn-outline-primary"><i class="fa-solid fa-plus"></i></a>
+                <!-- <button class="btn btn-sm btn-outline-secondary"><i class="fa-solid fa-eye"></i></button> -->
+              </td>
+            </tr>
+          <% }) %>
+        <% } else { %>
+          <tr>
+            <td colspan="7" class="text-center">No inquiries found.</td>
+          </tr>
+        <% } %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+<script src="https://cdn.datatables.net/2.2.2/js/dataTables.js"></script>
+<script>
+  new DataTable('#inquiryTable');
+</script>

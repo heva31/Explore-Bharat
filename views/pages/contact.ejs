@@ -1,0 +1,23 @@
+<% layout('boilerplate') %>
+
+<head>
+	<link rel="stylesheet" href="/css/contact.css">
+</head>
+
+<body>
+	
+	<div class="container" id="c1">
+		<div class="contact-box">
+			<div class="left"></div>
+			<form class="right" method="post" action="/contact_us">
+				<h2>Contact Us</h2>
+				<input type="text" class="field" name="name" placeholder="Your Name">
+				<input type="text" class="field" name="email" placeholder="Your Email">
+				<input type="text" class="field" name="phone" placeholder="Phone" maxlength="10">
+				<textarea placeholder="Message" name="message" class="field"></textarea>
+				<button type="submit" class="btn-send btn-success">Send</button>
+			</form>
+		</div>
+	</div>
+
+</body>

@@ -1,0 +1,78 @@
+<% layout('boilerplate') %>
+
+<style>
+    .search-results {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin: 20px;
+    gap: 20px;
+}
+
+.card-s {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background-color: white;
+}
+
+.card-s:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+.card-link-s {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+}
+
+.card-image-s img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-bottom: 1px solid #ddd;
+}
+
+.card-body-s {
+    padding: 15px;
+}
+
+.card-title-s {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.card-description-s {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.5;
+    margin-bottom: 15px;
+}
+</style>
+
+<h1 class="m-3">Travel Blogs</h1>
+
+<div class="search-results">
+    <% blogs.forEach(blog => { %>
+        <div class="card-s">
+            <a href="/blogs/<%= blog.slug %>" class="card-link-s">
+                <div class="card-image-s">
+                    <% if (blog.thumbnail) { %>
+                        <img src="<%= blog.thumbnail %>" alt="<%= blog.title %>" />
+                    <% } else { %>
+                        <img src="/images/default-banner.jpg" alt="Default Thumbnail" />
+                    <% } %>
+                </div>
+
+                <div class="card-body-s">
+                    <h3 class="card-title-s"><%= blog.title %></h3>
+                    <p class="card-description-s"><%= blog.content.substring(0, 150) %>...</p>
+                </div>
+            </a>
+        </div>
+    <% }) %>
+</div>

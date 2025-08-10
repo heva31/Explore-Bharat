@@ -1,0 +1,241 @@
+<% layout('boilerplate') %>
+
+<head>
+  <link rel="stylesheet" href="/css/place.css">
+</head>
+
+<body>
+
+  <div class="header" style="background-image: url(<%= place.headerImage %>);">
+    <h1><%= place.name %></h1>
+  </div>
+
+  <div class="content">
+    <div class="content-details">
+        <h2>HISTORY</h2>
+        <p id="content" class="collapsed-content">
+          <%= place.history %>
+        </p>
+
+        <div id="show-more-btn" class="show-more-btn" onclick="toggleContent()">
+            Know more
+        </div>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="content-details">
+      <h2>Tourist Attractions</h2>
+      <p id="content"><%= place.attractions %></p>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="content-details">
+      <h2>Timings</h2>
+      <p id="content"><%- place.timings %></p>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="content-details">
+      <h2>PHOTO GALLERY</h2>
+    </div>
+  </div>
+
+  <div class="full-img" id="fullImgBox">
+    <img src="<%= place.gallary.image_path %>" id="fullImg" />
+    <span onclick="closeFullImg()">&times;</span>
+  </div>
+
+  <div class="img-gallery">
+    <% if (place.gallary.length > 0) { %>
+      <% place.gallary.forEach((image, id) => { %>
+        <img src="<%= image.image_path %>" id="i<%= id %>" onclick="openFullImg(this)" />
+      <% }) %>
+    <% } else { %>
+      <p>No images available.</p>
+    <% } %>
+  </div>  
+
+  <div class="transport-section">
+    <h2>How to Get There</h2>
+
+    <div class="transport-method">
+      <img src="/images/bus.png" alt="Road Icon" />
+      <div>
+        <p><strong>By Road</strong></p>
+        <p><%= place.road_transport %></p>
+      </div>
+    </div>
+
+    <div class="transport-method">
+      <img src="/images/train.png" alt="Train Icon" />
+      <div>
+        <p><strong>By Train</strong></p>
+        <p><%= place.train_transport %></p>
+      </div>
+    </div>
+
+    <div class="transport-method">
+      <img src="/images/air.png" alt="Airplane Icon" />
+      <div>
+        <p><strong>By Air</strong></p>
+        <p><%= place.air_transport %></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="container mt-5">
+    <h1>Where To Stay</h1>
+    <div class="row">
+      <% if (place.hotels.length > 0) { %>
+        <% place.hotels.forEach(hotel => { %>
+          <div class="col-md-4 mb-4">
+            <div class="card">
+              <a href="<%= hotel.hotel_link %>" target="_blank">
+                <img src="<%= hotel.image_path %>" class="card-img-top" alt="<%= hotel.name %>">
+              </a>
+              <div class="hotel-body p-2">
+                <h5 class="hotel-title"><%= hotel.name %></h5>
+              </div>
+            </div>
+          </div>
+        <% }) %>
+      <% } else { %>
+        <div class="col-12">
+          <p>No hotel information available.</p>
+        </div>
+      <% } %>
+    </div>
+  </div>
+
+  <div class="operator">
+    <h2>Registered Tourist Guides</h2>
+    <div class="row">
+      <% if (place.guides.length > 0) { %>
+        <% place.guides.forEach(guide => { %>
+          <div class="col-md-4 mb-4">
+            <div class="details">
+              <div class="labelHed">Tourist Guide</div>
+              <h4><%= guide.name %></h4>
+              <table>
+                <tbody>
+                  <tr>
+                    <td>Mobile:</td>
+                    <td><%= guide.mobile %></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        <% }) %>
+      <% } else { %>
+        <div class="col-12">
+          <p>No registered guides available.</p>
+        </div>
+      <% } %>
+    </div>
+  </div>
+
+  <div class="content-details">
+    <% if (currentUser) { %>
+      <div class="mb-5">
+        <h2 class="mb-3">Leave a Review</h2>
+        <form class="needs-validation" method="post" action="/places/<%= place.id %>/reviews" novalidate>
+          <div class="mb-3">
+            <label class="form-label" for="rating">Rating</label>
+            <fieldset class="starability-slot">
+              <input type="radio" id="no-rate" class="input-no-rate" name="review[rating]" value="1" checked aria-label="No rating." />
+              <input type="radio" id="first-rate1" name="review[rating]" value="1" />
+              <label for="first-rate1" title="Terrible">1 star</label>
+              <input type="radio" id="first-rate2" name="review[rating]" value="2" />
+              <label for="first-rate2" title="Not good">2 stars</label>
+              <input type="radio" id="first-rate3" name="review[rating]" value="3" />
+              <label for="first-rate3" title="Average">3 stars</label>
+              <input type="radio" id="first-rate4" name="review[rating]" value="4" />
+              <label for="first-rate4" title="Very good">4 stars</label>
+              <input type="radio" id="first-rate5" name="review[rating]" value="5" />
+              <label for="first-rate5" title="Amazing">5 stars</label>
+            </fieldset>
+          </div>
+  
+          <div class="mb-3">
+            <label class="form-label" for="comment">Comments</label>
+            <textarea class="form-control" name="review[comment]" id="comment" rows="4" required></textarea>
+            <div class="invalid-feedback">Please add some comments for review</div>
+          </div>
+          <button class="btn btn-outline-dark">Submit</button>
+        </form>
+      </div>
+    <% } %>
+  
+    <% if (place.reviews.length > 0) { %>
+      <h2 class="mb-3">All Reviews</h2>
+      <div class="row">
+        <% for (let review of place.reviews) { %>
+          <div class="col-lg-2 col-md-3 col-sm-6 mb-3">
+            <div class="card p-3 me-2">
+              <div>
+                <h5 class="mb-1"><b>@<%= review.username %></b></h5>
+                <p class="starability-result card-text" data-rating="<%= review.rating %>"></p>
+                <p class="card-text"><%= review.comment %></p>
+                <% if (currentUser && currentUser.id === review.user_id) { %>
+                  <form method="POST" action="/places/<%= place.id %>/reviews/<%= review.id %>">
+                    <button class="btn btn-sm btn-dark">Delete</button>
+                  </form>
+                <% } %>
+              </div>
+            </div>
+          </div>
+        <% } %>
+      </div>
+    <% } %>
+  </div>  
+
+  <div class="mapouter">
+    <div class="gmap_canvas"><iframe class="gmap_iframe" width="100%" frameborder="0" scrolling="no" marginheight="0"
+        marginwidth="0"
+        src="<%= place.map_embed %>"></iframe>
+        <a href="https://embed-googlemap.com">embed google map</a>
+    </div>
+    <style>
+      .mapouter { margin: auto; text-align: right; width: 80%; height: 400px; }
+      .gmap_canvas { overflow: hidden; background: none !important; width: 100%; height: 400px; }
+      .gmap_iframe { height: 400px !important; }
+    </style>
+  </div>
+
+  <script>
+    var fullImgBox = document.getElementById("fullImgBox");
+    var fullImg = document.getElementById("fullImg");
+    var xyz;
+
+    function openFullImg(pic) {
+      fullImgBox.style.display = "flex";
+      fullImg.src = pic.src;
+      xyz = document.getElementById(pic.id);
+      xyz.classList.add("close");
+    }
+
+    function closeFullImg() {
+      fullImgBox.style.display = "none";
+      xyz.classList.remove("close");
+    }
+
+    function toggleContent() {
+        const content = document.getElementById('content');
+        const button = document.getElementById('show-more-btn');
+    
+        content.classList.toggle('expanded-content');
+        content.classList.toggle('collapsed-content');
+
+        if (content.classList.contains('expanded-content')) {
+            button.textContent = 'Show less';
+        } else {
+            button.textContent = 'Know more';
+        }
+    }
+  
+  </script>
+</body>

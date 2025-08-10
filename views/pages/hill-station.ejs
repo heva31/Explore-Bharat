@@ -1,0 +1,43 @@
+<% layout('boilerplate') %>
+
+<head>
+  <link rel="stylesheet" href="/css/categories.css">
+</head>
+
+<body>
+
+  <div id="temp">
+    <img src="/images/hill_station_banner.jpg" alt="">
+  </div>
+
+  <div class="categories-div">
+    <h1 class="categories-h1">Hill Stations</h1>
+    <p class="categories-p">
+      Hill stations like Gulmarg, Sonmarg, Mount Abu, and Saputara offer a delightful retreat amidst nature's
+      splendor. From the snow-capped peaks of Gulmarg to the tranquil lakes of Mount Abu, each destination boasts
+      its own unique charm. Whether it's skiing in the Himalayas, trekking through alpine meadows, exploring
+      ancient temples, or simply enjoying the serene beauty of lush landscapes, these hill stations provide an
+      enchanting escape from the mundane, leaving visitors refreshed and rejuvenated by the cool mountain air and
+      breathtaking vistas.
+    </p>
+  </div>
+
+  <% if (places.length > 0) { %>
+    <% places.forEach((place, index) => { %>
+      <% if (index % 2 === 0) { %> <!-- Start a new row every 2 items -->
+        <div class="o-div row">
+      <% } %>
+
+      <div class="d1 col-md-6">
+        <img src="<%= place.category_page_image %>" alt="<%= place.name %>" class="mx-auto d-flex"
+          onclick="openPage('/places/<%= place.slug %>')">
+        <div class="title"><%= place.name %></div>
+      </div>
+
+      <% if (index % 2 === 1 || index === places.length - 1) { %> <!-- Close the row after 2 items or last item -->
+        </div>
+      <% } %>
+    <% }) %>
+  <% } %>
+    
+</body>

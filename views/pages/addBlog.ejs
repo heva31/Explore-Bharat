@@ -1,0 +1,43 @@
+<% layout('boilerplateAdmin') %>
+
+<div class="container mt-5 add-place-page">
+<h1>Add New Blog Post</h1>
+
+<form action="/admin/addBlog" method="POST" enctype="multipart/form-data">
+
+    <div class="mb-3">
+        <label>Title</label>
+        <input type="text" name="title" class="form-control" placeholder="Blog Title" required>
+    </div>
+
+    <div class="mb-3">
+        <label>Content</label>
+        <textarea name="content" class="form-control" placeholder="Blog Content" rows="10" required></textarea>
+    </div>
+
+    <div class="mb-3">
+        <label>Thumbnail</label>
+        <input type="file" class="form-control" name="thumbnail" accept="image/*" onchange="previewImage(event)" required>
+        <button type="button" class="btn btn-danger btn-sm mt-2 clear-btn" onclick="clearImage()">Clear Image</button>
+        <img id="thumbnailPreview" src="#" alt="Thumbnail Preview" style="display:none; width:200px; max-height:200px; margin-top:10px; object-fit:cover; border-radius:10px;">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Publish Blog</button>
+</form>
+</div>
+
+<script>
+    function previewImage(event) {
+    const banner = document.getElementById('thumbnailPreview');
+    banner.src = URL.createObjectURL(event.target.files[0]);
+    banner.style.display = 'block';
+    banner.loading = 'lazy';
+}
+
+function clearImage() {
+    const bannerInput = document.querySelector('input[name="thumbnail"]');
+    const bannerPreview = document.getElementById('thumbnailPreview');
+    bannerInput.value = '';
+    bannerPreview.style.display = 'none';
+}
+</script>

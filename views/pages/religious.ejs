@@ -1,0 +1,49 @@
+<% layout('boilerplate') %>
+
+<head>
+  <link rel="stylesheet" href="/css/categories.css">
+</head>
+
+<body>
+
+  <div id="temp">
+    <img src="/images/75291.jpg" alt="">
+  </div>
+
+  <div class="categories-div">
+    <h1 class="categories-h1">Religious Places</h1>
+    <p class="categories-p">
+      India, a land of diverse spirituality, boasts several revered categories sites. Dwarka, situated in Gujarat,
+      echoes with the legends of Lord Krishna's kingdom, drawing devotees to the majestic Dwarkadhish Temple.
+      Vaishno Devi in Jammu and Kashmir beckons pilgrims with its sacred cave shrine dedicated to Mata Vaishno
+      Devi, offering a spiritually enriching journey amidst the Trikuta Mountains. Shrinathji, nestled in
+      Rajasthan's Nathdwara, captivates worshippers with its divine idol of Lord Krishna, embodying the playful
+      charm of the deity. Vrindavan, in Uttar Pradesh, resonates with the eternal love of Radha and Krishna,
+      enchanting visitors with its temples and festive fervor. Ayodhya, the birthplace of Lord Rama, holds a
+      sacred aura in Uttar Pradesh, inviting devotees to the revered Ram Janmabhoomi Temple and the essence of
+      divinity. Amidst the bustling streets of Old Delhi stands Jama Masjid, a Mughal marvel and a symbol of
+      categories harmony, where worshippers gather in reverence and tranquility, regardless of faith, embracing
+      the
+      spirit of unity amidst diversity.
+    </p>
+  </div>
+
+  <% if (places.length > 0) { %>
+    <% places.forEach((place, index) => { %>
+      <% if (index % 2 === 0) { %> <!-- Start a new row every 2 items -->
+        <div class="o-div row">
+      <% } %>
+
+      <div class="d1 col-md-6">
+        <img src="<%= place.category_page_image %>" alt="<%= place.name %>" class="mx-auto d-flex"
+          onclick="openPage('/places/<%= place.slug %>')">
+        <div class="title"><%= place.name %></div>
+      </div>
+
+      <% if (index % 2 === 1 || index === places.length - 1) { %> <!-- Close the row after 2 items or last item -->
+        </div>
+      <% } %>
+    <% }) %>
+  <% } %>
+
+</body>

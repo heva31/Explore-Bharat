@@ -1,0 +1,363 @@
+<% layout('boilerplateAdmin') %>
+
+<div class="container mt-5 add-place-page">
+    <h1>Add New Place</h1>
+    <form action="/admin/addPlace" method="POST" enctype="multipart/form-data">
+
+        <div class="mb-3">
+            <label>Name</label>
+            <input type="text" name="name" class="form-control" required>
+        </div>
+
+        <div class="mb-3">
+            <label>State</label>
+            <select name="state_id" class="form-control" required>
+                <option selected disabled>Select a State</option>
+                <% states.forEach(state => { %>
+                    <option value="<%= state.id %>"><%= state.name %></option>
+                <% }) %>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label>Category</label>
+            <select name="category_id" class="form-control" required>
+                <option selected disabled>Select a Category</option>
+                <% categories.forEach(category => { %>
+                    <option value="<%= category.id %>"><%= category.name %></option>
+                <% }) %>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label>Description</label>
+            <textarea name="description" class="form-control" rows="4" required></textarea>
+        </div>
+
+        <div class="mb-3">
+            <label>Name in Google Map</label>
+            <input type="text" name="gmap_name" class="form-control" required>
+        </div>
+
+        <div class="mb-3">
+            <label>Banner Image:</label>
+            <input type="file" class="form-control" name="banner_image" accept="image/*" onchange="previewBanner(event)" required>
+            <button type="button" class="btn btn-danger btn-sm mt-2 clear-btn" onclick="clearBanner()">Clear</button>
+            <img id="bannerPreview" src="#" alt="Banner Preview" style="display:none; width:100%; max-height:300px; margin-top:10px; object-fit:cover; border-radius:10px;">
+        </div>
+
+        <div class="mb-3">
+            <label>History</label>
+            <textarea name="history" class="form-control" rows="4" required></textarea>
+        </div>
+
+        <div class="mb-3">
+            <label>Attractions</label>
+            <textarea name="attractions" class="form-control" rows="3" required></textarea>
+        </div>
+
+        <div class="mb-3">
+            <label>Timings</label>
+            <textarea name="timings" class="form-control" rows="2" required></textarea>
+        </div>
+
+        <div class="mb-3">
+            <label>Road Transport</label>
+            <textarea name="road_transport" class="form-control" rows="2" required></textarea>
+        </div>
+
+        <div class="mb-3">
+            <label>Train Transport</label>
+            <textarea name="train_transport" class="form-control" rows="2" required></textarea>
+        </div>
+
+        <div class="mb-3">
+            <label>Air Transport</label>
+            <textarea name="air_transport" class="form-control" rows="2" required></textarea>
+        </div>
+
+        <div class="mb-3">
+            <label>Gallery Images:</label>
+            <input type="file" class="form-control" id="galleryInput" name="gallery_images" accept="image/*" multiple onchange="previewGallery(event)" required>
+            <button type="button" class="btn btn-danger btn-sm mt-2" onclick="clearGallery()">Clear Gallery</button>
+            <div id="galleryPreview" style="display:flex; flex-wrap:wrap; gap:10px; margin-top:10px;"></div>
+        </div>
+
+        <div class="mb-3">
+            <label>Place Image for category page:</label>
+            <input type="file" class="form-control" id="imgInput" name="category_page_image" accept="image/*" onchange="previewImage(event)" required>
+            <button type="button" class="btn btn-danger btn-sm mt-2" onclick="clearImage()">Clear Image</button>
+            <div id="imagePreview" style="display:flex; flex-wrap:wrap; gap:10px; margin-top:10px;"></div>
+        </div>
+
+        <div class="mb-3">
+            <label>Place Image for state page:</label>
+            <input type="file" class="form-control" id="stateImgInput" name="state_page_image" accept="image/*" onchange="previewStateImage(event)" required>
+            <button type="button" class="btn btn-danger btn-sm mt-2" onclick="clearStateImage()">Clear Image</button>
+            <div id="stateImagePreview" style="display:flex; flex-wrap:wrap; gap:10px; margin-top:10px;"></div>
+        </div>
+
+        <h3>Hotels</h3>
+        <div id="hotel-section">
+            <div class="hotel-group mb-3 position-relative p-3 border rounded">
+                <button type="button" class="btn btn-sm btn-danger position-absolute top-0 end-0"
+                    onclick="removeHotel(this)">×</button>
+        
+                <input type="text" name="hotel_names" placeholder="Hotel Name" class="form-control mb-2" required>
+        
+                <input type="file" class="form-control hotelInput" name="hotel_images" accept="image/*"
+                    onchange="previewHotels(event)" required>
+        
+                <div class="hotelPreview" style="display:flex; flex-wrap:wrap; gap:10px; margin-top:10px;"></div>
+        
+                <input type="text" name="hotel_links" placeholder="Hotel Booking Link" class="form-control mt-2" required>
+            </div>
+        </div>
+        
+        <button type="button" class="btn btn-secondary mt-3" onclick="addHotel()">Add More Hotel</button>
+
+        <h3>Tourist Guides</h3>
+        <div id="guide-section">
+            <div class="guide-group mb-3 position-relative p-3 border rounded">
+                <button type="button" class="btn btn-sm btn-danger position-absolute top-0 end-0"
+                    onclick="removeGuide(this)">×</button>
+        
+                <input type="text" name="guide_names" placeholder="Guide Name" class="form-control mb-2" required>
+        
+                <input type="text" name="guide_mobiles" placeholder="Mobile Number" class="form-control" required>
+            </div>
+        </div>
+        
+        <button type="button" class="btn btn-secondary mt-3" onclick="addGuide()">Add More Guide</button>
+
+        <br><br>
+        <button type="submit" class="btn btn-primary">Add Place</button>
+
+    </form>
+</div>
+
+<script>
+
+function previewBanner(event) {
+    const banner = document.getElementById('bannerPreview');
+    banner.src = URL.createObjectURL(event.target.files[0]);
+    banner.style.display = 'block';
+    banner.loading = 'lazy';
+}
+
+function clearBanner() {
+    const bannerInput = document.querySelector('input[name="banner_image"]');
+    const bannerPreview = document.getElementById('bannerPreview');
+    bannerInput.value = '';
+    bannerPreview.style.display = 'none';
+}
+
+function previewImage(event) {
+    const image = document.getElementById('imagePreview');
+    image.innerHTML = '';
+    const files = event.target.files;
+
+    const wrapper = document.createElement('div');
+        wrapper.style.position = 'relative';
+
+        const img = document.createElement('img');
+        img.src = URL.createObjectURL(files[0]);
+        img.loading = 'lazy';
+        img.style.width = '150px';
+        img.style.height = '100px';
+        img.style.objectFit = 'cover';
+        img.style.border = '1px solid #ccc';
+        img.style.borderRadius = '8px';
+
+        const removeBtn = document.createElement('button');
+        removeBtn.innerHTML = '&times;';
+        removeBtn.style.position = 'absolute';
+        removeBtn.style.top = '-8px';
+        removeBtn.style.right = '-8px';
+        removeBtn.style.background = 'red';
+        removeBtn.style.color = 'white';
+        removeBtn.style.border = 'none';
+        removeBtn.style.borderRadius = '50%';
+        removeBtn.style.width = '24px';
+        removeBtn.style.height = '24px';
+        removeBtn.style.cursor = 'pointer';
+        removeBtn.onclick = function() {
+            wrapper.remove();
+        };
+
+        wrapper.appendChild(img);
+        wrapper.appendChild(removeBtn);
+        image.appendChild(wrapper);
+}
+
+function clearImage() {
+    document.getElementById('imgInput').value = "";
+    document.getElementById('imagePreview').innerHTML = "";
+}
+
+function previewStateImage(event) {
+    const image = document.getElementById('stateImagePreview');
+    image.innerHTML = '';
+    const files = event.target.files;
+
+    const wrapper = document.createElement('div');
+        wrapper.style.position = 'relative';
+
+        const img = document.createElement('img');
+        img.src = URL.createObjectURL(files[0]);
+        img.loading = 'lazy';
+        img.style.width = '150px';
+        img.style.height = '100px';
+        img.style.objectFit = 'cover';
+        img.style.border = '1px solid #ccc';
+        img.style.borderRadius = '8px';
+
+        const removeBtn = document.createElement('button');
+        removeBtn.innerHTML = '&times;';
+        removeBtn.style.position = 'absolute';
+        removeBtn.style.top = '-8px';
+        removeBtn.style.right = '-8px';
+        removeBtn.style.background = 'red';
+        removeBtn.style.color = 'white';
+        removeBtn.style.border = 'none';
+        removeBtn.style.borderRadius = '50%';
+        removeBtn.style.width = '24px';
+        removeBtn.style.height = '24px';
+        removeBtn.style.cursor = 'pointer';
+        removeBtn.onclick = function() {
+            wrapper.remove();
+        };
+
+        wrapper.appendChild(img);
+        wrapper.appendChild(removeBtn);
+        image.appendChild(wrapper);
+}
+
+function clearStateImage() {
+    document.getElementById('stateImgInput').value = "";
+    document.getElementById('stateImagePreview').innerHTML = "";
+}
+
+function previewGallery(event) {
+    const gallery = document.getElementById('galleryPreview');
+    gallery.innerHTML = '';
+    const files = event.target.files;
+    for (let i = 0; i < files.length; i++) {
+        const wrapper = document.createElement('div');
+        wrapper.style.position = 'relative';
+
+        const img = document.createElement('img');
+        img.src = URL.createObjectURL(files[i]);
+        img.loading = 'lazy';
+        img.style.width = '150px';
+        img.style.height = '100px';
+        img.style.objectFit = 'cover';
+        img.style.border = '1px solid #ccc';
+        img.style.borderRadius = '8px';
+
+        const removeBtn = document.createElement('button');
+        removeBtn.innerHTML = '&times;';
+        removeBtn.style.position = 'absolute';
+        removeBtn.style.top = '-8px';
+        removeBtn.style.right = '-8px';
+        removeBtn.style.background = 'red';
+        removeBtn.style.color = 'white';
+        removeBtn.style.border = 'none';
+        removeBtn.style.borderRadius = '50%';
+        removeBtn.style.width = '24px';
+        removeBtn.style.height = '24px';
+        removeBtn.style.cursor = 'pointer';
+        removeBtn.onclick = function() {
+            wrapper.remove();
+        };
+
+        wrapper.appendChild(img);
+        wrapper.appendChild(removeBtn);
+        gallery.appendChild(wrapper);
+    }
+}
+
+function clearGallery() {
+    document.getElementById('galleryInput').value = "";
+    document.getElementById('galleryPreview').innerHTML = "";
+}
+
+function previewHotels(event) {
+    const input = event.target;
+    const previewDiv = input.parentElement.querySelector('.hotelPreview');
+    previewDiv.innerHTML = '';
+    
+    const files = input.files;
+    for (let i = 0; i < files.length; i++) {
+        const wrapper = document.createElement('div');
+        wrapper.style.position = 'relative';
+
+        const img = document.createElement('img');
+        img.src = URL.createObjectURL(files[i]);
+        img.loading = 'lazy';
+        img.style.width = '150px';
+        img.style.height = '100px';
+        img.style.objectFit = 'cover';
+        img.style.border = '1px solid #ccc';
+        img.style.borderRadius = '8px';
+
+        const removeBtn = document.createElement('button');
+        removeBtn.innerHTML = '&times;';
+        removeBtn.style.position = 'absolute';
+        removeBtn.style.top = '-8px';
+        removeBtn.style.right = '-8px';
+        removeBtn.style.background = 'red';
+        removeBtn.style.color = 'white';
+        removeBtn.style.border = 'none';
+        removeBtn.style.borderRadius = '50%';
+        removeBtn.style.width = '24px';
+        removeBtn.style.height = '24px';
+        removeBtn.style.cursor = 'pointer';
+        removeBtn.onclick = function() {
+            wrapper.remove();
+        };
+
+        wrapper.appendChild(img);
+        wrapper.appendChild(removeBtn);
+        previewDiv.appendChild(wrapper);
+    }
+}
+
+function addHotel() {
+    const hotelSection = document.getElementById('hotel-section');
+    const newHotelGroup = document.createElement('div');
+    newHotelGroup.className = 'hotel-group mb-3 position-relative p-3 border rounded';
+
+    newHotelGroup.innerHTML = `
+        <button type="button" class="btn btn-sm btn-danger position-absolute top-0 end-0 m-2" onclick="removeHotel(this)">×</button>
+        <input type="text" name="hotel_names" placeholder="Hotel Name" class="form-control mb-2" required>
+        <input type="file" class="form-control hotelInput" name="hotel_images" accept="image/*" onchange="previewHotels(event)" required>
+        <div class="hotelPreview" style="display:flex; flex-wrap:wrap; gap:10px; margin-top:10px;"></div>
+        <input type="text" name="hotel_links" placeholder="Hotel Booking Link" class="form-control mt-2" required>
+    `;
+
+    hotelSection.appendChild(newHotelGroup);
+}
+
+function removeHotel(button) {
+    button.parentElement.remove();
+}
+
+function addGuide() {
+    const guideSection = document.getElementById('guide-section');
+    const newGuideGroup = document.createElement('div');
+    newGuideGroup.className = 'guide-group mb-3 position-relative p-3 border rounded';
+
+    newGuideGroup.innerHTML = `
+        <button type="button" class="btn btn-sm btn-danger position-absolute top-0 end-0 m-2" onclick="removeGuide(this)">×</button>
+        <input type="text" name="guide_names" placeholder="Guide Name" class="form-control mb-2" required>
+        <input type="text" name="guide_mobiles" placeholder="Mobile Number" class="form-control" required>
+    `;
+
+    guideSection.appendChild(newGuideGroup);
+}
+
+function removeGuide(button) {
+    button.parentElement.remove();
+}
+</script>

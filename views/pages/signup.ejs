@@ -1,0 +1,31 @@
+<% layout('boilerplate') %>
+
+<body style="background-image:url('images/3040791.jpg'); background-attachment: fixed; background-position: center;">
+
+  <section class="form-section">
+
+    <h2>Create an Account</h2>
+
+    <form class="auth-form" action="/signup" method="POST">
+      <label for="fname">First Name</label>
+      <input type="text" id="fname" name="fname" required placeholder="Enter your first name">
+
+      <label for="lname">Last Name</label>
+      <input type="text" id="lname" name="lname" required placeholder="Enter your last name">
+
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" required placeholder="Enter your email">
+
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" required placeholder="Create a password">
+
+      <label for="confirm-password">Confirm Password</label>
+      <input type="password" id="confirmPassword" name="confirmPassword" required placeholder="Confirm your password">
+
+      <button type="submit" class="btn">Sign Up</button>
+      <p>Already have an account? <a href="/login">Login here</a></p>
+    </form>
+
+  </section>
+  
+</body>

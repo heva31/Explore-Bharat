@@ -1,0 +1,48 @@
+<% layout('boilerplate') %>
+
+<head>
+  <link rel="stylesheet" href="/css/categories.css">
+</head>
+
+<body>
+
+  <div id="temp">
+    <img src="/images/historic_banner.jpeg" alt="">
+  </div>
+
+  <div class="categories-div">
+    <h1 class="categories-h1">Historic Places</h1>
+    <p class="categories-p">
+      India is a treasure trove of cultural and historical marvels, with iconic landmarks that showcase the
+      nation's rich heritage. The Sun Temple in Gujarat, a stunning testament to intricate architecture, stands as
+      a symbol of devotion and artistic excellence. The Hawa Mahal in Jaipur, with its unique honeycomb façade,
+      beckons visitors to explore the royal history of Rajasthan. Moving north, the majestic Red Fort in Delhi, a
+      UNESCO World Heritage site, encapsulates the grandeur of Mughal architecture and serves as a poignant
+      reminder of India's struggle for independence. Further west, the Aguada Fort in Goa, perched on the shores
+      of the Arabian Sea, narrates tales of Portuguese colonial rule and maritime history. Meanwhile, the City
+      Palace in Udaipur, surrounded by the picturesque Lake Pichola, showcases the opulence and elegance of Rajput
+      rulers. Concluding the journey in the capital, the India Gate stands proudly as a war memorial, honoring the
+      sacrifices of Indian soldiers. Each of these landmarks contributes to India's diverse and vibrant tourism
+      landscape, attracting visitors with their unique stories and architectural brilliance.
+    </p>
+  </div>
+
+  <% if (places.length > 0) { %>
+    <% places.forEach((place, index) => { %>
+      <% if (index % 2 === 0) { %> <!-- Start a new row every 2 items -->
+        <div class="o-div row">
+      <% } %>
+
+      <div class="d1 col-md-6">
+        <img src="<%= place.category_page_image %>" alt="<%= place.name %>" class="mx-auto d-flex"
+          onclick="openPage('/places/<%= place.slug %>')">
+        <div class="title"><%= place.name %></div>
+      </div>
+
+      <% if (index % 2 === 1 || index === places.length - 1) { %> <!-- Close the row after 2 items or last item -->
+        </div>
+      <% } %>
+    <% }) %>
+  <% } %>
+  
+</body>
